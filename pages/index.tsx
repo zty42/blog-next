@@ -1,5 +1,4 @@
 import Link from "next/link";
-import styles from "../styles/Home.module.css";
 import { getAllPosts } from "../lib/api";
 import { useEffect } from "react";
 
@@ -13,18 +12,16 @@ export default function Home({ posts }) {
   });
   return (
     <>
-      <main className={styles.main}>
-        <div className={styles.description}>
-          {posts.map((post) => {
-            const { title, slug } = post;
-            return (
-              <p key={slug}>
-                <Link href={`/a/${slug}`}>{title}</Link>
-              </p>
-            );
-          })}
-        </div>
-      </main>
+      <div>
+        {posts.map((post) => {
+          const { title, slug } = post;
+          return (
+            <p key={slug}>
+              <Link href={`/a/${slug}`}>{title}</Link>
+            </p>
+          );
+        })}
+      </div>
     </>
   );
 }
