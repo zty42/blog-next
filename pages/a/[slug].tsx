@@ -2,17 +2,11 @@ import { getPostBySlug, getAllPosts } from "../../lib/api";
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import { ParsedUrlQuery } from "querystring";
 import { getMDXComponent } from "mdx-bundler/client";
-
 import React from "react";
+import { Post } from "../../@types";
 
 interface IParams extends ParsedUrlQuery {
   slug: string;
-}
-
-interface Post {
-  slug: string;
-  code: string;
-  frontmatter?: { [key: string]: any };
 }
 
 interface ContentPageProps {
@@ -22,7 +16,6 @@ interface ContentPageProps {
 export const getStaticProps: GetStaticProps = async (context) => {
   const { slug } = context.params as IParams;
   const post = await getPostBySlug(slug);
-
   return {
     props: {
       post,
