@@ -1,30 +1,30 @@
 import { join } from "path";
-import matter from "gray-matter";
 import fs from "fs";
-interface Post {
-  content: string;
-  title: string;
-  slug: string;
-}
+import { bundleMDX } from "mdx-bundler";
+import { Frontmatter, Post } from "../@types";
 const postsDirectory = join(process.cwd(), "_posts");
 
 export function getPostSlugs() {
-  return fs.readdirSync(postsDirectory);
+  const slugs = fs.readdirSync(postsDirectory);
+  console.log(slugs);
+  return slugs;
 }
 
-export function getPostBySlug(slug: string): Post {
+export async function getPostBySlug(slug: string): Promise<Post> {
   const realSlug = slug.replace(/\.mdx$/, "");
   const fullPath = join(postsDirectory, `${realSlug}.mdx`);
   const fileContents = fs.readFileSync(fullPath, "utf8");
-  const { data, content } = matter(fileContents);
+  const { code, frontmatter } = await bundleMDX<Frontmatter>({
+    source: fileContents,
+  });
 
-  return { ...data, content, slug: realSlug, title: data.title };
+  return { slug: realSlug, code, frontmatter };
 }
 
-export function getAllPosts(fields: string[] = []) {
+export async function getAllPosts(fields: string[] = []) {
   const slugs = getPostSlugs();
-  const posts = slugs
-    .map((slug) => getPostBySlug(slug, fields))
-    .sort((post1, post2) => (post1.date > post2.date ? -1 : 1));
-  return posts;
+  const postsPromises = slugs.map(async (slug) => await getPostBySlug(slug));
+  // .sort((post1, post2) => (post1.date > post2.date ? -1 : 1));
+  const res = await Promise.all(postsPromises);
+  return res;
 }

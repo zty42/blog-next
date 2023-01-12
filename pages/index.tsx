@@ -1,23 +1,20 @@
 import Link from "next/link";
+import { Post } from "../@types";
 import { getAllPosts } from "../lib/api";
-import { useEffect } from "react";
 
 export async function getStaticProps() {
-  const posts = getAllPosts();
+  const posts = await getAllPosts();
   return { props: { posts } };
 }
-export default function Home({ posts }) {
-  useEffect(() => {
-    console.log("this is a effect");
-  });
+export default function Home({ posts }: { posts: Post[] }) {
   return (
     <>
       <div>
         {posts.map((post) => {
-          const { title, slug } = post;
+          const { frontmatter, slug } = post;
           return (
             <p key={slug}>
-              <Link href={`/a/${slug}`}>{title}</Link>
+              <Link href={`/a/${slug}`}>{frontmatter?.title}</Link>
             </p>
           );
         })}

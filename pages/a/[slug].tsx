@@ -1,17 +1,19 @@
 import { getPostBySlug, getAllPosts } from "../../lib/api";
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import { ParsedUrlQuery } from "querystring";
-import { remark } from "remark";
-import remarkMdx from "remark-mdx";
-import html from "remark-html"
+import { bundleMDX } from "mdx-bundler";
+import { getMDXComponent } from "mdx-bundler/client";
+
+import React from "react";
+
 interface IParams extends ParsedUrlQuery {
   slug: string;
 }
 
 interface Post {
-  content: string;
-  title: string;
   slug: string;
+  code: string;
+  frontmatter?: { [key: string]: any };
 }
 
 interface ContentProps {
@@ -20,25 +22,16 @@ interface ContentProps {
 
 export const getStaticProps: GetStaticProps = async (context) => {
   const { slug } = context.params as IParams;
-  const post = getPostBySlug(slug);
-  // const compiled = await compile(post.content);
-  // const content = compiled.toString();
-  const content = remark()
-  .use(remarkMdx)
-  // .use(html)
-  .processSync(post.content)
-  .toString()
-
-  console.log(content)
+  const post = await getPostBySlug(slug);
 
   return {
     props: {
-      post: { ...post, content },
+      post,
     },
   };
 };
 export const getStaticPaths: GetStaticPaths = async () => {
-  const posts = getAllPosts();
+  const posts = await getAllPosts();
   return {
     paths: posts.map((p) => ({
       params: {
@@ -49,11 +42,13 @@ export const getStaticPaths: GetStaticPaths = async () => {
   };
 };
 const Content: NextPage<ContentProps> = ({ post }) => {
+  const { code, frontmatter } = post;
+  const Component = React.useMemo(() => getMDXComponent(code), [code]);
   return (
     <div>
-      <h1>{post.title}</h1>
+      <h1>{frontmatter?.title}</h1>
       <section>
-        {post.content}
+        <Component></Component>
       </section>
     </div>
   );
