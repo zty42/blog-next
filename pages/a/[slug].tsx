@@ -4,6 +4,7 @@ import { ParsedUrlQuery } from "querystring";
 import { getMDXComponent } from "mdx-bundler/client";
 import React from "react";
 import { Post } from "../../@types";
+import Button from '@mui/material/Button';
 
 interface IParams extends ParsedUrlQuery {
   slug: string;
@@ -40,7 +41,7 @@ const Content: NextPage<ContentPageProps> = ({ post }) => {
     <div>
       <h1>{frontmatter?.title}</h1>
       <section>
-        <Component></Component>
+        <Component components={{Button}}></Component>
       </section>
     </div>
   );

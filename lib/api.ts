@@ -4,7 +4,6 @@ import { existsSync } from "node:fs";
 
 import { bundleMDX } from "mdx-bundler";
 import { Frontmatter, Post } from "../@types";
-
 const postsDirectory = join(process.cwd(), "_posts");
 
 export async function getPostSlugs() {
