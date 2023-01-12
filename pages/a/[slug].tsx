@@ -1,7 +1,6 @@
 import { getPostBySlug, getAllPosts } from "../../lib/api";
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import { ParsedUrlQuery } from "querystring";
-import { bundleMDX } from "mdx-bundler";
 import { getMDXComponent } from "mdx-bundler/client";
 
 import React from "react";
@@ -16,7 +15,7 @@ interface Post {
   frontmatter?: { [key: string]: any };
 }
 
-interface ContentProps {
+interface ContentPageProps {
   post: Post;
 }
 
@@ -41,7 +40,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
     fallback: false,
   };
 };
-const Content: NextPage<ContentProps> = ({ post }) => {
+const Content: NextPage<ContentPageProps> = ({ post }) => {
   const { code, frontmatter } = post;
   const Component = React.useMemo(() => getMDXComponent(code), [code]);
   return (

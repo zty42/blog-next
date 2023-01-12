@@ -1,3 +1,4 @@
+import { NextPage } from "next";
 import Link from "next/link";
 import { Post } from "../@types";
 import { getAllPosts } from "../lib/api";
@@ -6,7 +7,11 @@ export async function getStaticProps() {
   const posts = await getAllPosts();
   return { props: { posts } };
 }
-export default function Home({ posts }: { posts: Post[] }) {
+
+interface HomePageProps {
+  posts: Post[];
+}
+const Home: NextPage<HomePageProps> = ({ posts }) => {
   return (
     <>
       <div>
@@ -21,4 +26,6 @@ export default function Home({ posts }: { posts: Post[] }) {
       </div>
     </>
   );
-}
+};
+
+export default Home;
