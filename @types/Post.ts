@@ -1,9 +1,9 @@
-import Frontmatter from "./Frontmatter"
+import Frontmatter from "./Frontmatter";
 
 interface Post {
   slug: string;
   code: string;
-  frontmatter?: Frontmatter
+  frontmatter?: Frontmatter;
 }
 
-export default Post
+export default Post;
