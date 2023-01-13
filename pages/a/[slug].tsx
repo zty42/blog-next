@@ -22,7 +22,6 @@ interface ContentPageProps {
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const { slug } = params as IParams;
   const allPosts = getAllPosts();
-  console.log(allPosts.map((item) => item.slug));
   const postIndex = allPosts.findIndex((post) => post.slug === slug);
   const prev = allPosts[postIndex - 1] || null;
   const next = allPosts[postIndex + 1] || null;

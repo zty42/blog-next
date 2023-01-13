@@ -8,7 +8,7 @@ module.exports = {
     "./_posts/**/*.mdx",
     "./components/**/*.{js,ts,jsx,tsx}",
   ],
-  important: '#__next',
+  important: "#__next",
   theme: {
     extend: {},
   },
