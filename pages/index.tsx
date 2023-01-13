@@ -1,4 +1,5 @@
 import { Chip, Box, Divider } from "@mui/material";
+import CalendarMonthOutlinedIcon from "@mui/icons-material/CalendarMonthOutlined";
 import { NextPage } from "next";
 import Link from "next/link";
 import { Post } from "../@types";
@@ -21,9 +22,10 @@ const Home: NextPage<HomePageProps> = ({ posts }) => {
           return (
             <>
               <div key={slug} className="flex my-10">
-                <div className=" mr-28">
+                <div className="w-[180px]">
                   <div className="text-base text-gray-400 font-normal">
-                    {formatDate(frontmatter.date)}
+                    <CalendarMonthOutlinedIcon />
+                    <span>{formatDate(frontmatter.date)}</span>
                   </div>
                 </div>
                 <div>
@@ -53,7 +55,6 @@ const Home: NextPage<HomePageProps> = ({ posts }) => {
                       );
                     })}
                   </span>
-                  {frontmatter?.summary && <div>{frontmatter?.summary}</div>}
                 </div>
               </div>
               <Divider></Divider>
