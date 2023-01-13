@@ -60,10 +60,14 @@ export function getPostByPath(path: string): Post {
   };
 }
 
-export async function getAllPosts() {
-  const postsPromises = getPostPath().map(
-    async (path) => await getPostByPath(path)
-  );
+export function getAllPosts() {
+  return getPostPath()
+    .map((path) => getPostByPath(path))
+    .sort((a, b) => dateSortDesc(a.frontmatter?.date, b.frontmatter?.date));
+}
 
-  return await Promise.all(postsPromises);
+export function dateSortDesc(a, b) {
+  if (a > b) return -1;
+  if (a < b) return 1;
+  return 0;
 }

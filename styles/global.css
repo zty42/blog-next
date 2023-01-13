@@ -1,8 +1,9 @@
-@import 'tailwindcss/base';
-@import 'tailwindcss/components';
-@import 'tailwindcss/utilities';
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
 
 main {
-  width: 1000px;
+  min-width: 375px;
+  max-width: 1000px;
   margin: 0 auto;
 }

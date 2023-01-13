@@ -3,8 +3,8 @@ import Link from "next/link";
 import { Post } from "../@types";
 import { getAllPosts } from "../lib/api";
 
-export async function getStaticProps() {
-  const posts = await getAllPosts();
+export function getStaticProps() {
+  const posts = getAllPosts();
   return { props: { posts } };
 }
 
