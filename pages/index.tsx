@@ -1,64 +1,34 @@
-import { Button, Box, Divider } from "@mui/material";
-import CalendarMonthOutlinedIcon from "@mui/icons-material/CalendarMonthOutlined";
 import { NextPage } from "next";
 import Link from "next/link";
-import { Post } from "../@types";
-import { getAllPosts } from "../lib/api";
-import { formatDate } from "../lib/date";
-export function getStaticProps() {
-  const posts = getAllPosts();
-  return { props: { posts } };
-}
 
-interface HomePageProps {
-  posts: Post[];
-}
-const Home: NextPage<HomePageProps> = ({ posts }) => {
+const Home = () => {
+  const list = [
+    {
+      name: "日志",
+      url: "/posts/",
+    },
+    {
+      name: "GitHub",
+      url: "/qweqweqwe",
+    },
+  ];
   return (
-    <>
-      <div className=" my-20">
-        {posts.map((post) => {
-          const { frontmatter, slug } = post;
+    <div className="prose mt-16 w-full max-w-4xl mx-auto">
+      <article className="p-4">
+        <h1>title</h1>
+        <p>web dev</p>
+      </article>
+      <div className="p-4">
+        {list.map((item, index) => {
           return (
-            <>
-              <div key={slug} className="flex my-10">
-                <div className="flex-none w-[180px]">
-                  <div className="text-base text-gray-400 font-normal flex items-center">
-                    <CalendarMonthOutlinedIcon />
-                    <span className="ml-1">{formatDate(frontmatter.date)}</span>
-                  </div>
-                </div>
-                <div>
-                  <Box
-                    component={"h2"}
-                    sx={{ color: "primary.main", mt: 0 }}
-                    className="flex-1"
-                  >
-                    <Link
-                      href={`/a/${slug}`}
-                      className="text-inherit no-underline"
-                    >
-                      {frontmatter.title}
-                    </Link>
-                  </Box>
-                  <Box>
-                    {frontmatter.tags.map((tag: string) => {
-                      return (
-                        <Button key={tag} size="small">
-                          #{tag}
-                        </Button>
-                      );
-                    })}
-                  </Box>
-                  <Box>{frontmatter.summary}</Box>
-                </div>
-              </div>
-              <Divider></Divider>
-            </>
+            <Link href={item.url} key={index} className="h-16 no-underline">
+              <div>{item.name}</div>
+              <div>{item.url}</div>
+            </Link>
           );
         })}
       </div>
-    </>
+    </div>
   );
 };
 

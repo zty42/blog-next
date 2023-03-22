@@ -2,13 +2,11 @@ import { useMemo } from "react";
 import { getPostBySlug, getAllPosts } from "../../lib/api";
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import Link from "next/link";
-
+import LeftIcon from "../../components/LeftIcon";
+import RightIcon from "../../components/RightIcon";
 import { ParsedUrlQuery } from "querystring";
 import { getMDXComponent } from "mdx-bundler/client";
 import { Post } from "../../@types";
-import Button from "@mui/material/Button";
-import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 interface IParams extends ParsedUrlQuery {
   slug: string;
 }
@@ -49,24 +47,29 @@ const Content: NextPage<ContentPageProps> = ({ post, prev, next }) => {
   const { code, frontmatter } = post;
   const Component = useMemo(() => getMDXComponent(code), [code]);
   return (
-    <div>
+    <div className="flex flex-col flex-1 prose">
       <h1>{frontmatter?.title}</h1>
-      <section>
-        <Component components={{ Button }}></Component>
+      <section className="flex-grow ">
+        <Component></Component>
       </section>
       <div className="flex justify-between">
         <div className="prev">
           {prev && (
-            <Button href={`/a/${prev.slug}`} startIcon={<ArrowBackIcon />}>
-              {prev.frontmatter?.title}
-            </Button>
+            <Link href={`/a/${prev.slug}`} className="text-inherit no-underline">
+              <span className="flex items-center">
+                <LeftIcon/>
+                {prev.frontmatter?.title}</span>
+            </Link>
           )}
         </div>
         <div className="next">
           {next && (
-            <Button href={`/a/${next.slug}`} endIcon={<ArrowForwardIcon />}>
-              {next.frontmatter?.title}
-            </Button>
+            <Link href={`/a/${next.slug}`} className="text-inherit no-underline">
+              <span className="flex items-center">
+                {next.frontmatter?.title}
+                <RightIcon/>
+                </span>
+            </Link>
           )}
         </div>
       </div>

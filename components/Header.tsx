@@ -1,6 +1,5 @@
-import { Box } from "@mui/material";
 import Link from "next/link";
-
+import BackIcon from "./BackIcon";
 interface HeaderInterface {
   title: string;
   isRootPath: boolean;
@@ -9,16 +8,14 @@ interface HeaderInterface {
 const Header = ({ title, isRootPath }: HeaderInterface) => {
   let header;
   if (isRootPath) {
-    header = (
-      <Box component={"h1"} sx={{ color: "primary.main" }}>
-        <Link href="/" className="text-inherit no-underline">{title}</Link>
-      </Box>
-    );
+    header = <div className="h-[64px]"></div>;
   } else {
     header = (
-      <Box sx={{ color: "primary.main" }}>
-        <Link href="/" className="text-inherit no-underline">{title}</Link>
-      </Box>
+      <div className="h-[64px] p-4">
+        <Link href="/" className="text-inherit no-underline flex h-full items-center">
+          <BackIcon /> <span className="text-xl">{title}</span>
+        </Link>
+      </div>
     );
   }
   return header;
