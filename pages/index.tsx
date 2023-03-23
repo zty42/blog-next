@@ -21,7 +21,7 @@ const Home = () => {
       <div className="p-4">
         {list.map((item, index) => {
           return (
-            <Link href={item.url} key={index} className="h-16 no-underline">
+            <Link href={item.url} key={index} className="block h-20 no-underline">
               <div>{item.name}</div>
               <div>{item.url}</div>
             </Link>

@@ -20,7 +20,7 @@ const Allposts: NextPage<AllpostsPageProps> = ({ posts }) => {
           href="/"
           className="text-inherit no-underline flex h-full items-center"
         >
-          <BackIcon /> <span className="text-xl">日志</span>
+          <BackIcon /> <span className="text-2xl">日志</span>
         </Link>
       </div>
       <div className="py-10 w-full max-w-4xl mx-auto">
@@ -32,8 +32,8 @@ const Allposts: NextPage<AllpostsPageProps> = ({ posts }) => {
                 key={slug}
                 className="h-16 px-4 justify-center tracking-wider"
               >
-                <Link href={`/a/${slug}`} className="no-underline font-medium">
-                  <p>{frontmatter.title}</p>
+                <Link href={`/post/${slug}`} className="no-underline font-medium">
+                  <p className="text-lg">{frontmatter.title}</p>
                   <span className="text-sm">
                     {formatDate(frontmatter.date)}
                   </span>
