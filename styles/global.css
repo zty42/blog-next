@@ -2,6 +2,6 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
-html {
-  font-family: "lucida grande", "lucida sans unicode", lucida, helvetica, "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
+body {
+  background-color: rgb(245,245,245);
 }

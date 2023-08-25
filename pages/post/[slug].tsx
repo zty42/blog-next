@@ -7,7 +7,6 @@ import RightIcon from "../../components/RightIcon";
 import { ParsedUrlQuery } from "querystring";
 import { getMDXComponent } from "mdx-bundler/client";
 import { Post } from "../../@types";
-import BackIcon from "../../components/BackIcon";
 interface IParams extends ParsedUrlQuery {
   slug: string;
 }
@@ -49,16 +48,12 @@ const Content: NextPage<ContentPageProps> = ({ post, prev, next }) => {
   const Component = useMemo(() => getMDXComponent(code), [code]);
   return (
     <>
-      <div className="h-[64px] p-4">
-        <Link
-          href="/posts"
-          className="text-inherit no-underline flex h-full items-center"
-        >
-          <BackIcon />
-        </Link>
-      </div>
+      <div className="h-[64px] p-4"></div>
       <div className="flex flex-col flex-1 py-10 w-full max-w-4xl mx-auto prose ">
-        <h1>{frontmatter?.title}</h1>
+        <h1 className="mb-0 font-extrabold">
+          {frontmatter?.title}
+        </h1>
+        <p className="text-sm">{frontmatter?.date}</p>
         <section className="flex-grow ">
           <Component></Component>
         </section>
