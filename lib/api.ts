@@ -60,7 +60,7 @@ export function getPostsByPage(page: number = 1, pageSize: number = PAGE_SIZE) {
   return allPosts.slice(start, end);
 }
 
-export function dateSortDesc(a, b) {
+export function dateSortDesc(a: number|string, b: number|string) {
   if (a > b) return -1;
   if (a < b) return 1;
   return 0;
