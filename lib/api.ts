@@ -4,13 +4,10 @@ import { Frontmatter, Post } from "../@types";
 import { transMdx } from "./mdx";
 import matter from "gray-matter";
 import glob from "glob";
+import { PAGE_SIZE } from "../config";
 
 const POST_DIR = "_posts";
 
-/**
- *
- * @returns POST_DIR目录下的所有mdx,md文件
- */
 export function getPostPath(): string[] {
   return glob.sync(POST_DIR + "/**/*.{mdx,md}");
 }
@@ -38,39 +35,25 @@ export function getRealPath(filePath: string): string {
 
   return realPath;
 }
-/**
- * 详情页数据
- * @param slug
- * @returns
- */
-export async function getPostBySlug(slug: string) {
+export async function getPostContentBySlug(slug: string) {
   const { code, frontmatter } = await transMdx(
     getRealPath(join(POST_DIR, slug))
   );
   return { slug, code, frontmatter };
 }
-/**
- * 用于首页数据展示,不需要处理mdx文件的内容
- * @param path
- * @returns
- */
-export function getPostByPath(path: string): Post {
-  const { data } = matter(readFileSync(path));
 
-  return {
-    slug: getSlug(path),
-    code: "",
-    frontmatter: data as Frontmatter,
-  };
+export function getPostMatterByPath(path: string) {
+  const { data } = matter(readFileSync(path));
+  return { frontmatter: data, slug: getSlug(path) };
 }
 
 export function getAllPosts() {
   return getPostPath()
-    .map((path) => getPostByPath(path))
-    .sort((a, b) => dateSortDesc(a.frontmatter?.date, b.frontmatter?.date));
+    .map((path) => getPostMatterByPath(path))
+    .sort((a, b) => dateSortDesc(a?.date, b?.date));
 }
 
-export function getPostsByPage(page: number = 1, pageSize: number = 2) {
+export function getPostsByPage(page: number = 1, pageSize: number = PAGE_SIZE) {
   const allPosts = getAllPosts();
   const start = (page - 1) * pageSize;
   const end = start + pageSize;

@@ -4,29 +4,53 @@ import Head from "next/head";
 import { Post } from "../../@types";
 import { getPostsByPage, getPostsLength } from "../../lib/api";
 import { formatDate } from "../../lib/date";
+import { PAGE_SIZE } from "../../config";
+import PageButton from "../../components/PageButton";
 
 interface PageProps {
   posts: Post[];
+  page: number;
+  total: number;
 }
 
-export function getStaticProps({ params }) {
-  const { page } = params as { page: string };
+export async function getStaticProps({ params }) {
+  const { page } = params;
   const posts = getPostsByPage(Number(page));
-  console.log(posts)
-  return { props: { posts } };
+  const total = await getPostsLength();
+  return { props: { posts, page: Number(page), total } };
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const postsLength = await getPostsLength();
+  const total = await getPostsLength();
   return {
-    paths: Array.from({ length: Math.ceil(postsLength / 2) }, (_, i) => ({
+    paths: Array.from({ length: Math.ceil(total / PAGE_SIZE) }, (_, i) => ({
       params: { page: `${i + 1}` },
     })),
     fallback: false,
   };
 };
 
-const Home: NextPage<PageProps> = ({ posts }) => {
+const Home: NextPage<PageProps> = ({ posts, page, total }) => {
+  const NextPageButton = () => {
+    if (page * PAGE_SIZE >= total) {
+      return null;
+    }
+    return (
+      <Link href={`/page/${page + 1}`} className="no-underline font-medium">
+        <PageButton>下一页</PageButton>
+      </Link>
+    );
+  };
+  const PrevPageButton = () => {
+    if (page === 1) {
+      return null;
+    }
+    return (
+      <Link href={`/page/${page - 1}`} className="no-underline font-medium">
+        <PageButton>上一页</PageButton>
+      </Link>
+    );
+  };
   return (
     <>
       <Head>
@@ -60,6 +84,10 @@ const Home: NextPage<PageProps> = ({ posts }) => {
             </div>
           );
         })}
+        <div className="flex gap-3">
+          <PrevPageButton />
+          <NextPageButton />
+        </div>
       </div>
     </>
   );

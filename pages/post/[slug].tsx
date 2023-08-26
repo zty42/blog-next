@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import { getPostBySlug, getAllPosts } from "../../lib/api";
+import { getPostContentBySlug, getAllPosts } from "../../lib/api";
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import Link from "next/link";
 import LeftIcon from "../../components/LeftIcon";
@@ -23,7 +23,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const postIndex = allPosts.findIndex((post) => post.slug === slug);
   const prev = allPosts[postIndex - 1] || null;
   const next = allPosts[postIndex + 1] || null;
-  const post = await getPostBySlug(slug);
+  const post = await getPostContentBySlug(slug);
   return {
     props: {
       post,

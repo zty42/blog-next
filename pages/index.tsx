@@ -2,10 +2,12 @@ import { NextPage } from "next";
 import Link from "next/link";
 import Head from "next/head";
 import { Post } from "../@types";
-import { getAllPosts,getPostsByPage } from "../lib/api";
+import { getAllPosts, getPostsByPage } from "../lib/api";
 import { formatDate } from "../lib/date";
+import { PAGE_SIZE } from "../config";
+import PageButton from "../components/PageButton";
 export function getStaticProps() {
-  const posts = getPostsByPage()
+  const posts = getPostsByPage();
 
   return { props: { posts } };
 }
@@ -15,6 +17,16 @@ interface PageProps {
 }
 
 const Home: NextPage<PageProps> = ({ posts }) => {
+  const NextPageButton = () => {
+    if (posts.length < PAGE_SIZE) {
+      return null;
+    }
+    return (
+      <Link href={`/page/2`} className="no-underline font-medium">
+        <PageButton>下一页</PageButton>
+      </Link>
+    );
+  };
   return (
     <>
       <Head>
@@ -48,13 +60,7 @@ const Home: NextPage<PageProps> = ({ posts }) => {
             </div>
           );
         })}
-      </div>
-      <div className="page">
-        <Link href={`/page/2`} className="no-underline font-medium">
-          <h1 className="text-xl font-bold tracking-wider">
-            下一頁
-          </h1>
-        </Link>
+       <NextPageButton />
       </div>
     </>
   );
