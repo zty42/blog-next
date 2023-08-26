@@ -49,7 +49,7 @@ const Content: NextPage<ContentPageProps> = ({ post, prev, next }) => {
   return (
     <>
       <div className="h-[64px] p-4"></div>
-      <div className="flex flex-col flex-1 py-10 w-full max-w-4xl mx-auto prose ">
+      <div className="flex flex-col flex-1 py-10 w-full max-w-4xl mx-auto prose animate__animated animate__fadeIn ">
         <h1 className="mb-0 font-extrabold">
           {frontmatter?.title}
         </h1>

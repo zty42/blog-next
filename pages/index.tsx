@@ -44,7 +44,7 @@ const Home: NextPage<PageProps> = ({ posts }) => {
           return (
             <div
               key={index}
-              className="justify-center mb-6 p-6 bg-white rounded-md"
+              className="justify-center mb-6 p-6 bg-white rounded-md animate__animated animate__fadeInUp"
             >
               <Link href={`/post/${slug}`} className="no-underline font-medium">
                 <h1 className="text-xl font-bold tracking-wider">
