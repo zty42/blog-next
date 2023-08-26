@@ -1,9 +1,7 @@
 import { useMemo } from "react";
-import { getPostContentBySlug, getAllPosts } from "../../lib/api";
+import { getPostContentByFilePath, getAllPosts } from "../../lib/api";
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import Link from "next/link";
-import LeftIcon from "../../components/LeftIcon";
-import RightIcon from "../../components/RightIcon";
 import { ParsedUrlQuery } from "querystring";
 import { getMDXComponent } from "mdx-bundler/client";
 import { Post } from "../../@types";
@@ -21,9 +19,10 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const { slug } = params as IParams;
   const allPosts = getAllPosts();
   const postIndex = allPosts.findIndex((post) => post.slug === slug);
+  const postFilePath = allPosts[postIndex].filePath;
   const prev = allPosts[postIndex - 1] || null;
   const next = allPosts[postIndex + 1] || null;
-  const post = await getPostContentBySlug(slug);
+  const post = await getPostContentByFilePath(postFilePath);
   return {
     props: {
       post,
@@ -34,6 +33,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 };
 export const getStaticPaths: GetStaticPaths = async () => {
   const posts = await getAllPosts();
+  console.log(posts);
   return {
     paths: posts.map((p) => ({
       params: {
@@ -62,7 +62,6 @@ const Content: NextPage<ContentPageProps> = ({ post, prev, next }) => {
             {prev && (
               <Link href={`/post/${prev.slug}`} className="no-underline">
                 <span className="flex items-center h-10">
-                  <LeftIcon />
                   {prev.frontmatter?.title}
                 </span>
               </Link>
@@ -73,7 +72,6 @@ const Content: NextPage<ContentPageProps> = ({ post, prev, next }) => {
               <Link href={`/post/${next.slug}`} className="no-underline">
                 <span className="flex items-center h-10">
                   {next.frontmatter?.title}
-                  <RightIcon />
                 </span>
               </Link>
             )}

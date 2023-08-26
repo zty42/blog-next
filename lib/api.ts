@@ -4,47 +4,37 @@ import { Frontmatter, Post } from "../@types";
 import { transMdx } from "./mdx";
 import matter from "gray-matter";
 import glob from "glob";
-import { PAGE_SIZE } from "../config";
+import { PAGE_SIZE, POST_DIR } from "../config";
+import { fi, sl } from "date-fns/locale";
 
-const POST_DIR = "_posts";
+// refactor: 
 
 export function getPostPath(): string[] {
-  return glob.sync(POST_DIR + "/**/*.{mdx,md}");
+  const result = glob.sync(POST_DIR + "/**/*.{mdx,md}");
+  console.log(result);
+  return result;
 }
 
 export function getPostsLength(): number {
   return getPostPath().length;
 }
-export function formatSlug(slug: string): string {
-  return slug.replace(/\.(mdx|md)/, "");
-}
+
 export function getSlug(path: string): string {
-  return formatSlug(path.split("/").at(1) || "");
+  const res = (path.split(`${POST_DIR}/`).at(1) as string)
+    .replace(/\.(mdx|md)/, "")
+    .replace("/", "_");
+  console.log(res, path);
+  return res;
 }
-export function getRealPath(filePath: string): string {
-  let realPath;
 
-  if (existsSync(filePath)) {
-    realPath =
-      glob.sync(filePath.replaceAll(`\\`, "/") + "/*.{mdx,md}")[0] || "";
-  } else {
-    const mdxPath = `${filePath}.mdx`;
-    const mdPath = `${filePath}.md`;
-    realPath = existsSync(mdxPath) ? mdxPath : mdPath;
-  }
-
-  return realPath;
-}
-export async function getPostContentBySlug(slug: string) {
-  const { code, frontmatter } = await transMdx(
-    getRealPath(join(POST_DIR, slug))
-  );
-  return { slug, code, frontmatter };
+export async function getPostContentByFilePath(filePath: string) {
+  const { code, frontmatter } = await transMdx(filePath);
+  return { code, frontmatter };
 }
 
 export function getPostMatterByPath(path: string) {
   const { data } = matter(readFileSync(path));
-  return { frontmatter: data, slug: getSlug(path) };
+  return { frontmatter: data, slug: getSlug(path), filePath: path };
 }
 
 export function getAllPosts() {
@@ -60,7 +50,7 @@ export function getPostsByPage(page: number = 1, pageSize: number = PAGE_SIZE) {
   return allPosts.slice(start, end);
 }
 
-export function dateSortDesc(a: number|string, b: number|string) {
+export function dateSortDesc(a: number | string, b: number | string) {
   if (a > b) return -1;
   if (a < b) return 1;
   return 0;
