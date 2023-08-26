@@ -1,4 +1,6 @@
-const PageButton = ({ children }) => {
+import { ReactNode } from "react";
+
+const PageButton = ({ children }:{children:ReactNode}) => {
   return (
     <span
     className="
