@@ -13,7 +13,7 @@ interface PageProps {
   total: number;
 }
 
-export async function getStaticProps({ params }) {
+export async function getStaticProps({ params }: { params: { page: string } }) {
   const { page } = params;
   const posts = getPostsByPage(Number(page));
   const total = await getPostsLength();
