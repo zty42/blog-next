@@ -1,18 +1,30 @@
-import { NextPage } from "next";
+import { GetStaticPaths, NextPage } from "next";
 import Link from "next/link";
 import Head from "next/head";
-import { Post } from "../@types";
-import { getAllPosts,getPostsByPage } from "../lib/api";
-import { formatDate } from "../lib/date";
-export function getStaticProps() {
-  const posts = getPostsByPage()
-
-  return { props: { posts } };
-}
+import { Post } from "../../@types";
+import { getPostsByPage, getPostsLength } from "../../lib/api";
+import { formatDate } from "../../lib/date";
 
 interface PageProps {
   posts: Post[];
 }
+
+export function getStaticProps({ params }) {
+  const { page } = params as { page: string };
+  const posts = getPostsByPage(Number(page));
+  console.log(posts)
+  return { props: { posts } };
+}
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  const postsLength = await getPostsLength();
+  return {
+    paths: Array.from({ length: Math.ceil(postsLength / 2) }, (_, i) => ({
+      params: { page: `${i + 1}` },
+    })),
+    fallback: false,
+  };
+};
 
 const Home: NextPage<PageProps> = ({ posts }) => {
   return (
@@ -48,13 +60,6 @@ const Home: NextPage<PageProps> = ({ posts }) => {
             </div>
           );
         })}
-      </div>
-      <div className="page">
-        <Link href={`/page/2`} className="no-underline font-medium">
-          <h1 className="text-xl font-bold tracking-wider">
-            下一頁
-          </h1>
-        </Link>
       </div>
     </>
   );

@@ -14,6 +14,10 @@ const POST_DIR = "_posts";
 export function getPostPath(): string[] {
   return glob.sync(POST_DIR + "/**/*.{mdx,md}");
 }
+
+export function getPostsLength(): number {
+  return getPostPath().length;
+}
 export function formatSlug(slug: string): string {
   return slug.replace(/\.(mdx|md)/, "");
 }
@@ -64,6 +68,13 @@ export function getAllPosts() {
   return getPostPath()
     .map((path) => getPostByPath(path))
     .sort((a, b) => dateSortDesc(a.frontmatter?.date, b.frontmatter?.date));
+}
+
+export function getPostsByPage(page: number = 1, pageSize: number = 2) {
+  const allPosts = getAllPosts();
+  const start = (page - 1) * pageSize;
+  const end = start + pageSize;
+  return allPosts.slice(start, end);
 }
 
 export function dateSortDesc(a, b) {
