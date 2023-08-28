@@ -44,17 +44,26 @@ const Home: NextPage<PageProps> = ({ posts }) => {
           return (
             <div
               key={index}
-              className="justify-center mb-6 p-6 bg-white rounded-md animate__animated animate__fadeInUp"
+              className="justify-center py-6 rounded-md animate__animated animate__fadeInUp border-b-1"
             >
               <Link href={`/post/${slug}`} className="no-underline font-medium">
                 <h1 className="text-xl font-bold tracking-wider">
                   {frontmatter.title}
                 </h1>
-                <p className="text-[rgb(108,108,108)] my-2">
+                <p className="text-[rgb(108,108,108)] my-2 text-sm">
                   {frontmatter.summary}
                 </p>
-                <p className="text-[rgb(108,108,108)]">
-                  {formatDate(frontmatter.date)}
+                <p className="text-[rgb(108,108,108)] text-sm">
+                  <span className="mr-4">
+                  发布于 {formatDate(frontmatter.date)}
+                  </span>
+                  {
+                    frontmatter.tags&&frontmatter.tags.map((tag,index) => {
+                      return (
+                        <span key={index} className="mr-2">#{tag}</span>
+                      )
+                    })
+                  }
                 </p>
               </Link>
             </div>

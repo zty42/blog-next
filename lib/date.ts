@@ -6,5 +6,5 @@ import { parseISO, format } from "date-fns";
  */
 export function formatDate(dateStr: string): string {
   if (!dateStr) return "";
-  return format(parseISO(dateStr), "dd MMM yyyy");
+  return format(parseISO(dateStr), "yyyy-MM-dd");
 }
