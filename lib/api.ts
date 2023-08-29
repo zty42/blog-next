@@ -1,17 +1,12 @@
-import { join } from "node:path";
-import { existsSync, readFileSync } from "node:fs";
+import { readFileSync } from "node:fs";
 import { Frontmatter, Post } from "../@types";
 import { transMdx } from "./mdx";
 import matter from "gray-matter";
 import glob from "glob";
 import { PAGE_SIZE, POST_DIR } from "../config";
-import { fi, sl } from "date-fns/locale";
-
-// refactor: 
-
+import {formatDate} from './date'
 export function getPostPath(): string[] {
   const result = glob.sync(POST_DIR + "/**/*.{mdx,md}");
-  console.log(result);
   return result;
 }
 
@@ -23,7 +18,6 @@ export function getSlug(path: string): string {
   const res = (path.split(`${POST_DIR}/`).at(1) as string)
     .replace(/\.(mdx|md)/, "")
     .replace("/", "_");
-  console.log(res, path);
   return res;
 }
 
@@ -34,7 +28,8 @@ export async function getPostContentByFilePath(filePath: string) {
 
 export function getPostMatterByPath(path: string) {
   const { data } = matter(readFileSync(path));
-  return { frontmatter: data, slug: getSlug(path), filePath: path };
+  const yearInfo = formatDate(data.date,'yyyy')
+  return { frontmatter: data, slug: getSlug(path), filePath: path,yearInfo };
 }
 
 export function getAllPosts() {

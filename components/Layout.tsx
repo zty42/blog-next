@@ -14,7 +14,9 @@ const Layout = ({ children }: LayoutProps) => {
             <div className="logo text-2xl font-bold">tianyuan</div>
           </Link>
           <ul className="flex gap-3">
+            <Link href="/archive"> 
             <li className="hover:underline hover:decoration-pink-500">归档</li>
+            </Link>
             <li className="hover:underline hover:decoration-pink-500">标签</li>
             <li className="hover:underline hover:decoration-pink-500">关于</li>
           </ul>
