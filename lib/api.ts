@@ -1,5 +1,4 @@
 import { readFileSync } from "node:fs";
-import { Frontmatter, Post } from "../@types";
 import { transMdx } from "./mdx";
 import matter from "gray-matter";
 import glob from "glob";

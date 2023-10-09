@@ -44,15 +44,27 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 const Content: NextPage<ContentPageProps> = ({ post, prev, next }) => {
   const { code, frontmatter } = post;
+  console.log(code);
   const Component = useMemo(() => getMDXComponent(code), [code]);
   return (
     <>
       <div className="h-[64px] p-4"></div>
-      <div className="flex flex-col flex-1 py-10 w-full max-w-4xl mx-auto prose animate__animated animate__fadeIn ">
-        <h1 className="mb-0 font-extrabold">
-          {frontmatter?.title}
-        </h1>
-        <p className="text-sm">{frontmatter?.date}</p>
+      <div className="flex flex-col flex-1 py-10 w-full max-w-4xl mx-auto prose prose-sm animate__animated animate__fadeIn ">
+        <h1 className="mb-0 font-extrabold">{frontmatter?.title}</h1>
+        <p className="text-sm">
+          <span className="mr-4">
+          {frontmatter?.date}
+          </span>
+
+          {frontmatter.tags &&
+            frontmatter.tags.map((tag, index) => {
+              return (
+                <span key={index} className="mr-2 bg-tag">
+                  #{tag}
+                </span>
+              );
+            })}
+        </p>
         <section className="flex-grow ">
           <Component></Component>
         </section>

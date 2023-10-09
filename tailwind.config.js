@@ -11,22 +11,19 @@ module.exports = {
   // important: "#__next",
   theme: {
     extend: {
-      typography: {
+      typography: ({theme})=> ({
         DEFAULT: {
           css: {
-            // pre: {
-            //   color: "#eee",
-            //   backgroundColor: "#2f2f2f",
-            // },
+            maxWidth: '80ch',
+            // '--tw-prose-headings': 'rgb(92, 107, 192)',
             code: {
-              backgroundColor: "#f3f4f6",
+              backgroundColor: "#f7fafc",
               color: "#f59e0b",
-              fontWeight: "400",
               "border-radius": "0.25rem",
-            }
+            },
           },
         },
-      },
+      }),
     },
   },
   plugins: [

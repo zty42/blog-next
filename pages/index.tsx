@@ -34,8 +34,7 @@ const Home: NextPage<PageProps> = ({ posts }) => {
       </Head>
       <header className="prose mt-16 w-full max-w-4xl mx-auto">
         <article>
-          <h1>Hi there 👋</h1>
-          <p>web dev</p>
+          <p>这里是 zty 的个人博客, 记录工作和生活</p>
         </article>
       </header>
       <div className="py-10 w-full max-w-4xl mx-auto">
@@ -60,7 +59,7 @@ const Home: NextPage<PageProps> = ({ posts }) => {
                   {
                     frontmatter.tags&&frontmatter.tags.map((tag,index) => {
                       return (
-                        <span key={index} className="mr-2">#{tag}</span>
+                        <span key={index} className="mr-2 bg-tag">#{tag}</span>
                       )
                     })
                   }

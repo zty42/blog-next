@@ -7,19 +7,29 @@ interface LayoutProps {
 
 const Layout = ({ children }: LayoutProps) => {
   return (
-    <div className="flex flex-col min-h-screen px-4">
-      <header className="w-full max-w-4xl mx-auto">
+    <div className="flex flex-col min-h-screen px-4 mx-auto prose prose-sm">
+      <header>
         <nav className="h-[60px] leading-[60px] flex justify-between items-center">
           <Link href="/" className="no-underline">
-            <div className="logo text-2xl font-bold">tianyuan</div>
+            <div className="logo text-2xl font-bold">INDEX</div>
           </Link>
-          <ul className="flex gap-3">
-            <Link href="/archive"> 
-            <li className="hover:underline hover:decoration-pink-500">归档</li>
+          <div className="flex gap-3">
+            <Link href="/archive">
+              <div className="hover:underline">
+                归档
+              </div>
             </Link>
-            <li className="hover:underline hover:decoration-pink-500">标签</li>
-            <li className="hover:underline hover:decoration-pink-500">关于</li>
-          </ul>
+            <Link href="/tags">
+              <div className="hover:underline">
+                标签
+              </div>
+            </Link>
+            <Link href="/about">
+              <div className="hover:underline">
+                关于
+              </div>
+            </Link>
+          </div>
         </nav>
       </header>
       <main className="flex-grow flex flex-col w-full">{children}</main>
