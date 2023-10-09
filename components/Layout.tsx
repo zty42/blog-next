@@ -8,12 +8,24 @@ interface LayoutProps {
 
 const Layout = ({ children }: LayoutProps) => {
   return (
-    <div className="flex flex-col min-h-screen px-4 mx-auto prose prose-sm">
+    <div
+      className="flex flex-col 
+    min-h-screen px-4 mx-auto
+    prose prose-sm
+    dark:prose-invert
+    "
+    >
       <header>
         <nav className="h-[60px] leading-[60px] flex justify-between items-center">
           <Link href="/" className="no-underline">
             <div className="logo text-2xl font-bold">
-              <Image alt="logo" src={Logo} width={40} height={40} className="my-0 inline-block" />
+              <Image
+                alt="logo"
+                src={Logo}
+                width={40}
+                height={40}
+                className="my-0 inline-block"
+              />
               <span className="ml-2"></span>
             </div>
           </Link>

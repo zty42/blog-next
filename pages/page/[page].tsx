@@ -74,10 +74,10 @@ const Home: NextPage<PageProps> = ({ posts, page, total }) => {
                 <h1 className="text-xl font-bold tracking-wider">
                   {frontmatter.title}
                 </h1>
-                <p className="text-[rgb(108,108,108)] my-2">
+                <p className=" my-2">
                   {frontmatter.summary}
                 </p>
-                <p className="text-[rgb(108,108,108)]">
+                <p className="">
                   {formatDate(frontmatter.date)}
                 </p>
               </Link>

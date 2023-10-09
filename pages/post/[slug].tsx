@@ -5,6 +5,7 @@ import Link from "next/link";
 import { ParsedUrlQuery } from "querystring";
 import { getMDXComponent } from "mdx-bundler/client";
 import { Post } from "../../@types";
+import Head from "next/head";
 interface IParams extends ParsedUrlQuery {
   slug: string;
 }
@@ -47,13 +48,14 @@ const Content: NextPage<ContentPageProps> = ({ post, prev, next }) => {
   const Component = useMemo(() => getMDXComponent(code), [code]);
   return (
     <>
+      <Head>
+        <title>blog - {frontmatter.title}</title>
+      </Head>
       <div className="h-[64px] p-4"></div>
-      <div className="flex flex-col flex-1 py-10 w-full max-w-4xl mx-auto prose prose-sm animate__animated animate__fadeIn ">
+      <div className="flex flex-col flex-1 py-10 w-full max-w-4xl mx-auto animate__animated animate__fadeIn ">
         <h1 className="mb-0 font-extrabold">{frontmatter?.title}</h1>
         <p className="text-sm">
-          <span className="mr-4">
-          {frontmatter?.date}
-          </span>
+          <span className="mr-4">{frontmatter?.date}</span>
 
           {frontmatter.tags &&
             frontmatter.tags.map((tag, index) => {

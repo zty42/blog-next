@@ -1,27 +1,21 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  // corePlugins: {
-  //   preflight: false,
-  // },
+  darkMode: "class",
   content: [
     "./pages/**/*.{js,ts,jsx,tsx}",
     "./_posts/**/*.mdx",
     "./components/**/*.{js,ts,jsx,tsx}",
   ],
-  // important: "#__next",
   theme: {
     extend: {
-      typography: ({theme})=> ({
+      typography: ({ theme }) => ({
         DEFAULT: {
           css: {
-            maxWidth: '80ch',
-            // '--tw-prose-headings': 'rgb(92, 107, 192)',
+            maxWidth: "80ch",
           },
         },
       }),
     },
   },
-  plugins: [
-    require("@tailwindcss/typography"),
-  ],
+  plugins: [require("@tailwindcss/typography")],
 };
