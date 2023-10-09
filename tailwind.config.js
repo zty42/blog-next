@@ -16,11 +16,6 @@ module.exports = {
           css: {
             maxWidth: '80ch',
             // '--tw-prose-headings': 'rgb(92, 107, 192)',
-            code: {
-              backgroundColor: "#f7fafc",
-              color: "#f59e0b",
-              "border-radius": "0.25rem",
-            },
           },
         },
       }),

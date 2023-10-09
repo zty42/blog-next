@@ -44,7 +44,6 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 const Content: NextPage<ContentPageProps> = ({ post, prev, next }) => {
   const { code, frontmatter } = post;
-  console.log(code);
   const Component = useMemo(() => getMDXComponent(code), [code]);
   return (
     <>
