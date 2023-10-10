@@ -2,14 +2,10 @@ import { Html, Head, Main, NextScript } from "next/document";
 
 export default function Document() {
   return (
-    <Html lang="en" className="dark">
+    <Html lang="en">
       <Head />
-      <body
-        className=" antialiased 
-      bg-white 
-      dark:bg-slate-900
-      "
-      >
+      <body>
+        <script src="noflash.js" async />
         <Main />
         <NextScript />
       </body>

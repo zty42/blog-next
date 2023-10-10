@@ -34,10 +34,10 @@ const Home: NextPage<PageProps> = ({ posts }) => {
       </Head>
       <header className="prose mt-16 w-full max-w-4xl mx-auto">
         <article className="prose prose-sm dark:prose-invert">
-          <p className="text-sm">这里是 zty 的个人博客, 记录工作和生活</p>
+          <p className="text-base">这里是 xxx 的个人博客, 记录工作和生活</p>
         </article>
       </header>
-      <div className="py-10 w-full max-w-4xl mx-auto animate__animated animate__fadeIn">
+      <div className="py-10 w-full max-w-4xl mx-auto animate__animated animate__fadeIn prose prose-sm dark:prose-invert">
         {posts.map((post, index) => {
           const { frontmatter, slug } = post;
           return (
@@ -46,9 +46,9 @@ const Home: NextPage<PageProps> = ({ posts }) => {
               className="justify-center py-6 rounded-md border-b-1"
             >
               <Link href={`/post/${slug}`} className="no-underline font-medium">
-                <h1 className="text-xl font-bold tracking-wider">
+                <p className=" text-lg font-bold tracking-wider">
                   {frontmatter.title}
-                </h1>
+                </p>
                 <p className="my-2 text-sm">
                   {frontmatter.summary}
                 </p>
