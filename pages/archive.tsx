@@ -8,7 +8,6 @@ import { groupBy, sortBy } from "lodash-es";
 export function getStaticProps() {
   const posts = getAllPosts();
   const postsGroup = groupBy(posts, "yearInfo");
-  console.log(postsGroup, typeof postsGroup);
   return { props: { postsGroup } };
 }
 type PostGroup = {
@@ -20,7 +19,6 @@ interface PageProps {
 
 const Archive: NextPage<PageProps> = ({ postsGroup }) => {
   const yearArray: string[] = Object.keys(postsGroup).sort((a,b) => (Number(b) - Number(a)))
-  console.log(yearArray)
   return (
     <>
       <Head>

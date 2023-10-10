@@ -49,26 +49,30 @@ const Home: NextPage<PageProps> = ({ posts }) => {
                 <p className=" text-lg font-bold tracking-wider">
                   {frontmatter.title}
                 </p>
-                <p className="my-2 text-sm">
-                  {frontmatter.summary}
-                </p>
+                <p className="my-2 text-sm">{frontmatter.summary}</p>
                 <p className="text-sm">
-                  <span className="mr-4">
-                  发布于 {formatDate(frontmatter.date)}
+                  <span className="mr-2">
+                    发布于 {formatDate(frontmatter.date)}
                   </span>
-                  {
-                    frontmatter.tags&&frontmatter.tags.map((tag,index) => {
+                  {frontmatter.tags &&
+                    frontmatter.tags.map((tag, index) => {
                       return (
-                        <span key={index} className="mr-2 bg-tag">#{tag}</span>
-                      )
-                    })
-                  }
+                        <span
+                          key={index}
+                          className="ml-2 text-[rgb(232,129,88)] 
+                          dark:text-[rgb(211,114,80)]
+                          rounded p2"
+                        >
+                          #{tag}
+                        </span>
+                      );
+                    })}
                 </p>
               </Link>
             </div>
           );
         })}
-       <NextPageButton />
+        <NextPageButton />
       </div>
     </>
   );

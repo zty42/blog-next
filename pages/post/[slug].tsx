@@ -60,7 +60,8 @@ const Content: NextPage<ContentPageProps> = ({ post, prev, next }) => {
           {frontmatter.tags &&
             frontmatter.tags.map((tag, index) => {
               return (
-                <span key={index} className="mr-2 bg-tag">
+                <span key={index} className="ml-2 rounded p2
+                text-[rgb(232,129,88)] dark:text-[rgb(211,114,80)]">
                   #{tag}
                 </span>
               );

@@ -2,15 +2,15 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import Logo from "../assets/logo.svg";
-// import dynamic from "next/dynamic";
+import dynamic from "next/dynamic";
 
 interface LayoutProps {
   children: React.ReactNode;
 }
-import DarkmodeButton from "./DarkModeButton";
-// const DarkModeButton = dynamic(() => import("./DarkModeButton"), {
-//   ssr: false,
-// });
+// import DarkModeButton from "./DarkModeButton";
+const DarkModeButton = dynamic(() => import("./DarkModeButton"), {
+  ssr: false,
+});
 
 const Layout = ({ children }: LayoutProps) => {
   return (
@@ -46,7 +46,9 @@ const Layout = ({ children }: LayoutProps) => {
             <Link href="/about">
               <div className="hover:underline">关于</div>
             </Link>
-            <DarkModeButton />
+            <div className="w-6 flex items-center">
+              <DarkModeButton />
+            </div>
           </div>
         </nav>
       </header>
