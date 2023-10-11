@@ -10,15 +10,10 @@ body {
 body.dark {
   background-color: rgb(15 23 42)
 }
-/* .bg-tag {
-  background-color: rgba(255,229,100,0.2);
+/* [rgb(232,129,88)] dark:text-[rgb(211,114,80)] */
+.header-link {
+  @apply relative w-fit block after:block after:content-[''] after:absolute after:bottom-2 after:h-[3px] after:bg-[rgb(232,129,88)] dark:after:bg-[rgb(211,114,80)] after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-center
 }
-
-.dark .bg-tag {
-  background-color: #d23669
-  
-} */
-
 
 
 

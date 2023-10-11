@@ -32,24 +32,18 @@ const Home: NextPage<PageProps> = ({ posts }) => {
       <Head>
         <title>blog</title>
       </Head>
-      <header className="prose mt-16 w-full max-w-4xl mx-auto">
-        <article className="prose prose-sm dark:prose-invert">
-          <p>这里是 xxx 的个人博客, 记录工作和生活</p>
+      <header className="mt-16">
+        <article className=" text-xl">
+          <p>测试 Markdown 文件 2023</p>
         </article>
       </header>
-      <div className="py-10 w-full max-w-4xl mx-auto animate__animated animate__fadeIn prose prose-sm dark:prose-invert">
+      <div className="py-10 animate__animated animate__fadeIn prose prose-sm dark:prose-invert">
         {posts.map((post, index) => {
           const { frontmatter, slug } = post;
           return (
-            <div
-              key={index}
-              className="justify-center py-4"
-            >
+            <div key={index} className="justify-center py-4 text-sm">
               <Link href={`/post/${slug}`} className="no-underline">
-                <p>
-                  {frontmatter.title}
-                </p>
-                <p className="my-2 text-sm">{frontmatter.summary}</p>
+                <p>{frontmatter.title}</p>
                 <p className="text-sm">
                   <span className="mr-2">
                     发布于 {formatDate(frontmatter.date)}
