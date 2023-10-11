@@ -5,7 +5,7 @@ export default function Document() {
     <Html lang="en">
       <Head />
       <body>
-        <script src="noflash.js" async />
+        <script src="/noflash.js" async />
         <Main />
         <NextScript />
       </body>
