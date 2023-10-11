@@ -26,6 +26,9 @@ dependencies:
   date-fns:
     specifier: ^2.29.3
     version: 2.29.3
+  disqus-react:
+    specifier: ^1.1.5
+    version: 1.1.5(react-dom@18.2.0)(react@18.2.0)
   gray-matter:
     specifier: ^4.0.3
     version: 4.0.3
@@ -935,12 +938,12 @@ packages:
     resolution: {integrity: sha512-NuHqBY1PB/D8xU6s/thBgOAiAP7HOYDQ32+BFZILJ8ivkUkAHQnWfn6WhL79Owj1qmUnoN/YPhktdIoucipkAQ==}
     dev: false
 
-  /acorn-import-assertions@1.9.0(acorn@8.8.1):
+  /acorn-import-assertions@1.9.0(acorn@8.10.0):
     resolution: {integrity: sha512-cmMwop9x+8KFhxvKrKfPYmN6/pKTYYHBqLa0DfvVZcKMJWNyWLnaqND7dx/qn66R7ewM1UX5XMaDVP5wlVTaVA==}
     peerDependencies:
       acorn: ^8
     dependencies:
-      acorn: 8.8.1
+      acorn: 8.10.0
     dev: false
 
   /acorn-jsx@5.3.2(acorn@8.8.1):
@@ -1402,6 +1405,16 @@ packages:
     dependencies:
       path-type: 4.0.0
     dev: true
+
+  /disqus-react@1.1.5(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-9fdG5m6c3wJzlCDLaMheuUagMVj3s5qgUSXdekpCsvzYOKG21AiuOoqyDzA0oXrpPnYzgpnsvPYqZ+i0hJPGZw==}
+    peerDependencies:
+      react: ^15.6.1 || ^16.0.0 || ^17.0.0 || ^18.0.0
+      react-dom: ^15.6.1 || ^16.0.0 || ^17.0.0 || ^18.0.0
+    dependencies:
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+    dev: false
 
   /dlv@1.1.3:
     resolution: {integrity: sha512-+HlytyjlPKnIG8XuRG8WvmBP8xs8P71y+SKKS6ZXWoEgLuePxtDoUEiH7WkdePWrQ5JBpE6aoVqfZfJUQkjXwA==}
@@ -4233,8 +4246,8 @@ packages:
       '@webassemblyjs/ast': 1.11.6
       '@webassemblyjs/wasm-edit': 1.11.6
       '@webassemblyjs/wasm-parser': 1.11.6
-      acorn: 8.8.1
-      acorn-import-assertions: 1.9.0(acorn@8.8.1)
+      acorn: 8.10.0
+      acorn-import-assertions: 1.9.0(acorn@8.10.0)
       browserslist: 4.21.4
       chrome-trace-event: 1.0.3
       enhanced-resolve: 5.15.0

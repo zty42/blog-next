@@ -6,6 +6,8 @@ import { ParsedUrlQuery } from "querystring";
 import { getMDXComponent } from "mdx-bundler/client";
 import { Post } from "../../@types";
 import Head from "next/head";
+import { DiscussionEmbed } from "disqus-react";
+
 interface IParams extends ParsedUrlQuery {
   slug: string;
 }
@@ -46,6 +48,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 const Content: NextPage<ContentPageProps> = ({ post, prev, next }) => {
   const { code, frontmatter } = post;
   const Component = useMemo(() => getMDXComponent(code), [code]);
+
   return (
     <>
       <Head>
@@ -74,6 +77,15 @@ const Content: NextPage<ContentPageProps> = ({ post, prev, next }) => {
           <Component></Component>
         </section>
         <hr className="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700" />
+        <DiscussionEmbed
+          shortname="typluto"
+          config={{
+            url: post.slug,
+            identifier: post.slug,
+            title: frontmatter.title,
+            language: "zh_TW", //e.g. for Traditional Chinese (Taiwan)
+          }}
+        />
 
         <div className="flex justify-between">
           <div className="prev">

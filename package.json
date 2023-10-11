@@ -16,6 +16,7 @@
     "@types/mdx": "^2.0.8",
     "animate.css": "^4.1.1",
     "date-fns": "^2.29.3",
+    "disqus-react": "^1.1.5",
     "gray-matter": "^4.0.3",
     "lodash-es": "^4.17.21",
     "mdx-bundler": "^9.2.1",

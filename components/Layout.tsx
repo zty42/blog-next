@@ -2,7 +2,7 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import dynamic from "next/dynamic";
-
+import Head from "next/head";
 interface LayoutProps {
   children: React.ReactNode;
 }
@@ -13,6 +13,10 @@ const DarkModeButton = dynamic(() => import("./DarkModeButton"), {
 
 const Layout = ({ children }: LayoutProps) => {
   return (
+    <>
+    <Head>
+      <title>zty's blog</title>
+    </Head>
     <div
       className="flex flex-col 
     min-h-screen px-4 mx-auto
@@ -56,6 +60,7 @@ const Layout = ({ children }: LayoutProps) => {
         © {new Date().getFullYear()}, authored by zty.
       </footer>
     </div>
+    </>
   );
 };
 
