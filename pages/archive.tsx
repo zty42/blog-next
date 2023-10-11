@@ -28,7 +28,7 @@ const Archive: NextPage<PageProps> = ({ postsGroup }) => {
         {yearArray.map((year) => {
           return (
             <div className="animate__animated animate__fadeIn" key={year}>
-              <h1 className="tracking-wider text-xl pt-6">{year}</h1>
+              <h2 className="tracking-wider pt-6">#{year}</h2>
               {postsGroup[year].map((post, index) => {
                 const { frontmatter, slug } = post;
                 return (
@@ -40,10 +40,10 @@ const Archive: NextPage<PageProps> = ({ postsGroup }) => {
                       href={`/post/${slug}`}
                       className="no-underline font-medium"
                     >
-                      <h3 className="font-bold mt-1">
+                      <p className="mt-1">
                         <span className=" font-normal text-sm mr-6">{formatDate(frontmatter.date)}</span>
                         {frontmatter.title}
-                      </h3>
+                      </p>
                     </Link>
                   </div>
                 );
