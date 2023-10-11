@@ -48,11 +48,13 @@ export const getStaticPaths: GetStaticPaths = async () => {
 const Content: NextPage<ContentPageProps> = ({ post, prev, next }) => {
   const { code, frontmatter } = post;
   const Component = useMemo(() => getMDXComponent(code), [code]);
+  const { title } = frontmatter;
+  const headTitle = `blog - ${title}`;
 
   return (
     <>
       <Head>
-        <title>blog - {frontmatter.title}</title>
+        <title>{headTitle}</title>
       </Head>
       <div className="h-[64px] p-4"></div>
       <div className="flex flex-col flex-1 py-10 w-full max-w-4xl mx-auto animate__animated animate__fadeIn ">
@@ -83,7 +85,7 @@ const Content: NextPage<ContentPageProps> = ({ post, prev, next }) => {
             url: post.slug,
             identifier: post.slug,
             title: frontmatter.title,
-            language: "zh_TW", //e.g. for Traditional Chinese (Taiwan)
+            language: "zh",
           }}
         />
 
