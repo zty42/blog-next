@@ -37,10 +37,11 @@ interface PageProps {
 }
 
 const TagPage: NextPage<PageProps> = ({ tagGroup,tagName }) => {
+  const headTitle = `blog - 标签#${tagName}`;
   return (
     <>
       <Head>
-        <title>blog-标签#{tagName}</title>
+        <title>{headTitle}</title>
       </Head>
       <div className="py-10 w-full max-w-4xl mx-auto">
         <div className="animate__animated animate__fadeIn">
