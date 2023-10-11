@@ -40,7 +40,7 @@ const TagPage: NextPage<PageProps> = ({ tagGroup,tagName }) => {
   return (
     <>
       <Head>
-        <title>blog-#{tagName}</title>
+        <title>blog-标签#{tagName}</title>
       </Head>
       <div className="py-10 w-full max-w-4xl mx-auto">
         <div className="animate__animated animate__fadeIn">

@@ -30,7 +30,7 @@ const Layout = ({ children }: LayoutProps) => {
                 src="/logo.svg"
                 width={40}
                 height={40}
-                className="my-0 inline-block"
+                className="my-0 inline-block hover:rotate-12 transition-all duration-300"
               />
               <span className="ml-2"></span>
             </div>

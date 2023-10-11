@@ -44,25 +44,30 @@ const Home: NextPage<PageProps> = ({ posts }) => {
             <div key={index} className="justify-center py-4 text-sm">
               <Link href={`/post/${slug}`} className="no-underline">
                 <p>{frontmatter.title}</p>
-                <p className="text-sm">
-                  <span className="mr-2">
-                    发布于 {formatDate(frontmatter.date)}
-                  </span>
-                  {frontmatter.tags &&
-                    frontmatter.tags.map((tag, index) => {
-                      return (
+              </Link>
+              <p className="text-sm">
+                <span className="mr-2">
+                  发布于 {formatDate(frontmatter.date)}
+                </span>
+                {frontmatter.tags &&
+                  frontmatter.tags.map((tag, index) => {
+                    return (
+                      <Link
+                        href={`/tag/${tag}`}
+                        className="no-underline"
+                        key={index}
+                      >
                         <span
-                          key={index}
                           className="ml-2 text-[rgb(232,129,88)] 
                           dark:text-[rgb(211,114,80)]
                           rounded p2"
                         >
                           #{tag}
                         </span>
-                      );
-                    })}
-                </p>
-              </Link>
+                      </Link>
+                    );
+                  })}
+              </p>
             </div>
           );
         })}
