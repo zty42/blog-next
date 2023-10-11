@@ -34,7 +34,7 @@ const Home: NextPage<PageProps> = ({ posts }) => {
       </Head>
       <header className="prose mt-16 w-full max-w-4xl mx-auto">
         <article className="prose prose-sm dark:prose-invert">
-          <p className=" text-lg">这里是 xxx 的个人博客, 记录工作和生活</p>
+          <p>这里是 xxx 的个人博客, 记录工作和生活</p>
         </article>
       </header>
       <div className="py-10 w-full max-w-4xl mx-auto animate__animated animate__fadeIn prose prose-sm dark:prose-invert">
@@ -45,8 +45,8 @@ const Home: NextPage<PageProps> = ({ posts }) => {
               key={index}
               className="justify-center py-4"
             >
-              <Link href={`/post/${slug}`} className="no-underline font-medium">
-                <p className="tracking-wider text-base">
+              <Link href={`/post/${slug}`} className="no-underline">
+                <p>
                   {frontmatter.title}
                 </p>
                 <p className="my-2 text-sm">{frontmatter.summary}</p>

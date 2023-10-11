@@ -37,7 +37,7 @@ const Archive: NextPage<PageProps> = ({ tagList }) => {
               className="animate__animated animate__fadeIn inline-block mr-4"
               key={index}
             >
-              <Link href={`/tags/${tag[0]}`}>
+              <Link href={`/tag/${tag[0]}`}>
                 <div className="justify-center pt-1">
                   {tag[0]}
                   <span className=" ml-1">({tag[1]})</span>

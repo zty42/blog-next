@@ -1,7 +1,6 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import Logo from "../assets/logo.svg";
 import dynamic from "next/dynamic";
 
 interface LayoutProps {
@@ -28,7 +27,7 @@ const Layout = ({ children }: LayoutProps) => {
             <div className="logo text-2xl font-bold">
               <Image
                 alt="logo"
-                src={Logo}
+                src="/logo.svg"
                 width={40}
                 height={40}
                 className="my-0 inline-block"
@@ -37,13 +36,13 @@ const Layout = ({ children }: LayoutProps) => {
             </div>
           </Link>
           <div className="flex gap-3">
-            <Link href="/archive">
+            <Link href="/archive" className="no-underline">
               <div className="hover:underline">归档</div>
             </Link>
-            <Link href="/tags">
+            <Link href="/tags" className="no-underline">
               <div className="hover:underline">标签</div>
             </Link>
-            <Link href="/about">
+            <Link href="/about" className="no-underline">
               <div className="hover:underline">关于</div>
             </Link>
             <div className="w-6 flex items-center">
