@@ -37,13 +37,13 @@ const Layout = ({ children }: LayoutProps) => {
           </Link>
           <div className="flex gap-3">
             <Link href="/archive" className="no-underline">
-              <div className="header-link">归档</div>
+              <div className="hover-link">归档</div>
             </Link>
             <Link href="/tags" className="no-underline">
-              <div className="header-link">标签</div>
+              <div className="hover-link">标签</div>
             </Link>
             <Link href="/about" className="no-underline">
-              <div className="header-link">关于</div>
+              <div className="hover-link">关于</div>
             </Link>
             <div className="w-6 flex items-center">
               <DarkModeButton />

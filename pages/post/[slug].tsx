@@ -60,8 +60,11 @@ const Content: NextPage<ContentPageProps> = ({ post, prev, next }) => {
           {frontmatter.tags &&
             frontmatter.tags.map((tag, index) => {
               return (
-                <span key={index} className="ml-2 rounded p2
-                text-[rgb(232,129,88)] dark:text-[rgb(211,114,80)]">
+                <span
+                  key={index}
+                  className="ml-2 rounded p2
+                text-[rgb(232,129,88)] dark:text-[rgb(211,114,80)]"
+                >
                   #{tag}
                 </span>
               );
@@ -70,11 +73,13 @@ const Content: NextPage<ContentPageProps> = ({ post, prev, next }) => {
         <section className="flex-grow ">
           <Component></Component>
         </section>
+        <hr className="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700" />
+
         <div className="flex justify-between">
           <div className="prev">
             {prev && (
               <Link href={`/post/${prev.slug}`} className="no-underline">
-                <span className="flex items-center h-10">
+                <span className="flex items-center h-10 hover-link">
                   {prev.frontmatter?.title}
                 </span>
               </Link>
@@ -83,7 +88,7 @@ const Content: NextPage<ContentPageProps> = ({ post, prev, next }) => {
           <div className="next">
             {next && (
               <Link href={`/post/${next.slug}`} className="no-underline">
-                <span className="flex items-center h-10">
+                <span className="flex items-center h-10 hover-link">
                   {next.frontmatter?.title}
                 </span>
               </Link>

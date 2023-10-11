@@ -11,7 +11,12 @@ export async function transMdx(path: string) {
       options.remarkPlugins = [...(options.remarkPlugins ?? [])];
       options.rehypePlugins = [
         ...(options.rehypePlugins ?? []),
-        [rehypePrettyCode, { theme: 'dracula' }]
+        [rehypePrettyCode, { 
+          theme: {
+            dark: 'dracula-soft',
+            light: 'dracula',
+          },
+         }]
     ];
       return options;
     },
