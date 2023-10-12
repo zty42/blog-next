@@ -5,6 +5,7 @@ import { Post } from "../@types";
 import { getAllPosts } from "../lib/api";
 import { formatDate } from "../lib/date";
 import { groupBy, sortBy } from "lodash-es";
+import { TITLE } from "../config";
 export function getStaticProps() {
   const posts = getAllPosts();
   const postsGroup = groupBy(posts, "yearInfo");
@@ -19,10 +20,11 @@ interface PageProps {
 
 const Archive: NextPage<PageProps> = ({ postsGroup }) => {
   const yearArray: string[] = Object.keys(postsGroup).sort((a,b) => (Number(b) - Number(a)))
+  const headTitle = `归档 | ${TITLE}`;
   return (
     <>
       <Head>
-        <title>blog-归档</title>
+        <title>{headTitle}</title>
       </Head>
       <div className="py-10 w-full max-w-4xl mx-auto">
         {yearArray.map((year) => {

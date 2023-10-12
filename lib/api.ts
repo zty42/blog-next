@@ -4,6 +4,7 @@ import matter from "gray-matter";
 import glob from "glob";
 import { PAGE_SIZE, POST_DIR } from "../config";
 import {formatDate} from './date'
+
 export function getPostPath(): string[] {
   const result = glob.sync(POST_DIR + "/**/*.{mdx,md}");
   return result;

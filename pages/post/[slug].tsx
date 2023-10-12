@@ -7,6 +7,7 @@ import { getMDXComponent } from "mdx-bundler/client";
 import { Post } from "../../@types";
 import Head from "next/head";
 import { DiscussionEmbed } from "disqus-react";
+import { TITLE } from "../../config";
 
 interface IParams extends ParsedUrlQuery {
   slug: string;
@@ -49,7 +50,7 @@ const Content: NextPage<ContentPageProps> = ({ post, prev, next }) => {
   const { code, frontmatter } = post;
   const Component = useMemo(() => getMDXComponent(code), [code]);
   const { title } = frontmatter;
-  const headTitle = `blog - ${title}`;
+  const headTitle = `${title} | ${TITLE}`;
 
   return (
     <>
@@ -75,6 +76,7 @@ const Content: NextPage<ContentPageProps> = ({ post, prev, next }) => {
               );
             })}
         </p>
+        <hr />
         <section className="flex-grow ">
           <Component></Component>
         </section>

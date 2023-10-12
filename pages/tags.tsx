@@ -2,6 +2,7 @@ import { NextPage } from "next";
 import Link from "next/link";
 import Head from "next/head";
 import { getAllPosts } from "../lib/api";
+import { TITLE } from "../config";
 export function getStaticProps() {
   const posts = getAllPosts();
   const tags = posts
@@ -24,10 +25,11 @@ interface PageProps {
   tagList: string[][];
 }
 const Archive: NextPage<PageProps> = ({ tagList }) => {
+  const headTitle = `所有标签 | ${TITLE}`;
   return (
     <>
       <Head>
-        <title>blog-所有标签</title>
+        <title>{headTitle}</title>
       </Head>
       <div className="py-10 w-full max-w-4xl mx-auto">
         <div className=" ">所有标签</div>

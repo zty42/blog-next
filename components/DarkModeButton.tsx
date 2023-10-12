@@ -13,7 +13,7 @@ const DarkmodeButton = () => {
         src={mode.value ? "/moon.svg" : "/sun.svg"}
         width={24}
         height={24}
-        className="my-0"
+        className="my-0 hover:rotate-45 transition-all duration-300"
         suppressHydrationWarning={true}
       />
     </button>

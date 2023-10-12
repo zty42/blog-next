@@ -19,6 +19,7 @@ const Layout = ({ children }: LayoutProps) => {
           min-h-screen px-4 mx-auto
           antialiased 
           prose prose-sm
+          prose-hr:my-1
           dark:prose-invert"
       >
         <header>

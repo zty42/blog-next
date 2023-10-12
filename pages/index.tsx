@@ -2,9 +2,9 @@ import { NextPage } from "next";
 import Link from "next/link";
 import Head from "next/head";
 import { Post } from "../@types";
-import { getAllPosts, getPostsByPage } from "../lib/api";
+import { getPostsByPage } from "../lib/api";
 import { formatDate } from "../lib/date";
-import { PAGE_SIZE } from "../config";
+import { PAGE_SIZE, HEAD_DESCRIPTION, TITLE } from "../config";
 import PageButton from "../components/PageButton";
 export function getStaticProps() {
   const posts = getPostsByPage();
@@ -30,14 +30,14 @@ const Home: NextPage<PageProps> = ({ posts }) => {
   return (
     <>
       <Head>
-        <title>blog</title>
+        <title>{TITLE}</title>
       </Head>
       <header className="mt-16">
-        <article className=" text-xl">
-          <p>测试 Markdown 文件 2023</p>
+        <article>
+          <p>{HEAD_DESCRIPTION}</p>
         </article>
       </header>
-      <div className="py-10 animate__animated animate__fadeIn prose prose-sm dark:prose-invert">
+      <div className="py-10 animate__animated animate__fadeIn">
         {posts.map((post, index) => {
           const { frontmatter, slug } = post;
           return (

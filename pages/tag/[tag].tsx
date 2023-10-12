@@ -5,6 +5,7 @@ import { Post } from "../../@types";
 import { getAllPosts } from "../../lib/api";
 import { formatDate } from "../../lib/date";
 import { groupBy, sortBy } from "lodash-es";
+import { TITLE } from "../../config";
 export const getStaticProps: GetStaticProps = ({ params }) => {
   const { tag } = params as { tag: string };
   const posts = getAllPosts();
@@ -37,7 +38,7 @@ interface PageProps {
 }
 
 const TagPage: NextPage<PageProps> = ({ tagGroup,tagName }) => {
-  const headTitle = `blog - 标签#${tagName}`;
+  const headTitle = `标签#${tagName} | ${TITLE}`;
   return (
     <>
       <Head>

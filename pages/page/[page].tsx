@@ -4,7 +4,7 @@ import Head from "next/head";
 import { Post } from "../../@types";
 import { getPostsByPage, getPostsLength } from "../../lib/api";
 import { formatDate } from "../../lib/date";
-import { PAGE_SIZE } from "../../config";
+import { PAGE_SIZE,HEAD_DESCRIPTION, TITLE } from "../../config";
 import PageButton from "../../components/PageButton";
 
 interface PageProps {
@@ -30,13 +30,13 @@ export const getStaticPaths: GetStaticPaths = async () => {
   };
 };
 
-const Home: NextPage<PageProps> = ({ posts, page, total }) => {
+const Page: NextPage<PageProps> = ({ posts, page, total }) => {
   const NextPageButton = () => {
     if (page * PAGE_SIZE >= total) {
       return null;
     }
     return (
-      <Link href={`/page/${page + 1}`} className="no-underline font-medium">
+      <Link href={`/page/${page + 1}`} className="no-underline">
         <PageButton>下一页</PageButton>
       </Link>
     );
@@ -46,7 +46,7 @@ const Home: NextPage<PageProps> = ({ posts, page, total }) => {
       return null;
     }
     return (
-      <Link href={`/page/${page - 1}`} className="no-underline font-medium">
+      <Link href={`/page/${page - 1}`} className="no-underline">
         <PageButton>上一页</PageButton>
       </Link>
     );
@@ -54,43 +54,52 @@ const Home: NextPage<PageProps> = ({ posts, page, total }) => {
   return (
     <>
       <Head>
-        <title>blog</title>
+        <title>{TITLE}</title>
       </Head>
-      <header className="prose mt-16 w-full max-w-4xl mx-auto">
-        <article>
-          <h1>Hi there 👋</h1>
-          <p>web dev</p>
+      <header className="mt-16">
+        <article className=" text-xl">
+          <p>{HEAD_DESCRIPTION}</p>
         </article>
       </header>
-      <div className="py-10 w-full max-w-4xl mx-auto">
+      <div className="py-10 animate__animated animate__fadeIn">
         {posts.map((post, index) => {
           const { frontmatter, slug } = post;
           return (
-            <div
-              key={index}
-              className="justify-center mb-6 p-6 bg-white rounded-md animate__animated animate__fadeInUp"
-            >
-              <Link href={`/post/${slug}`} className="no-underline font-medium">
-                <h1 className="text-xl font-bold tracking-wider">
-                  {frontmatter.title}
-                </h1>
-                <p className=" my-2">
-                  {frontmatter.summary}
-                </p>
-                <p className="">
-                  {formatDate(frontmatter.date)}
-                </p>
+            <div key={index} className="justify-center py-4 text-sm">
+              <Link href={`/post/${slug}`} className="no-underline">
+                <p>{frontmatter.title}</p>
               </Link>
+              <p className="text-sm">
+                <span className="mr-2">
+                  发布于 {formatDate(frontmatter.date)}
+                </span>
+                {frontmatter.tags &&
+                  frontmatter.tags.map((tag, index) => {
+                    return (
+                      <Link
+                        href={`/tag/${tag}`}
+                        className="no-underline"
+                        key={index}
+                      >
+                        <span
+                          className="ml-2 text-[rgb(232,129,88)] 
+                          dark:text-[rgb(211,114,80)]
+                          rounded p2"
+                        >
+                          #{tag}
+                        </span>
+                      </Link>
+                    );
+                  })}
+              </p>
             </div>
           );
         })}
-        <div className="flex gap-3">
-          <PrevPageButton />
-          <NextPageButton />
-        </div>
+        <PrevPageButton />
+        <NextPageButton />
       </div>
     </>
   );
 };
 
-export default Home;
+export default Page;
