@@ -1,7 +1,7 @@
 import { bundleMDX } from "mdx-bundler";
 import { readFile } from "node:fs/promises";
 import { Frontmatter } from "../@types";
-import rehypePrettyCode from 'rehype-pretty-code';
+import rehypePrettyCode from "rehype-pretty-code";
 
 export async function transMdx(path: string) {
   const fileContents = await readFile(path, "utf8");
@@ -9,15 +9,17 @@ export async function transMdx(path: string) {
     source: fileContents,
     mdxOptions(options) {
       options.remarkPlugins = [...(options.remarkPlugins ?? [])];
-      options.rehypePlugins = [
-        ...(options.rehypePlugins ?? []),
-        [rehypePrettyCode, { 
-          theme: {
-            dark: 'dracula-soft',
-            light: 'dracula',
+      options.rehypePlugins = [...(options.rehypePlugins ?? []),
+        [
+          rehypePrettyCode,
+          {
+            theme: {
+              dark: "dracula-soft",
+              light: "dracula",
+            },
           },
-         }]
-    ];
+        ],
+      ];
       return options;
     },
     esbuildOptions(options) {
@@ -28,4 +30,3 @@ export async function transMdx(path: string) {
 
   return { code, frontmatter };
 }
-
