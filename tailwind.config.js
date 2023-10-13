@@ -14,6 +14,7 @@ module.exports = {
             maxWidth: "80ch",
             '--tw-prose-invert-links':theme.colors.gray[300],
             '--tw-prose-invert-headings':theme.colors.gray[300],
+            '--tw-prose-invert-bullets':theme.colors.gray[300],
           },
         },
       }),
