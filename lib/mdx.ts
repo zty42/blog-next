@@ -5,11 +5,12 @@ import rehypePrettyCode from "rehype-pretty-code";
 
 export async function transMdx(path: string) {
   const fileContents = await readFile(path, "utf8");
-  const { code, frontmatter } = await bundleMDX<Frontmatter>({
+  const { code, frontmatter } = await bundleMDX({
     source: fileContents,
     mdxOptions(options) {
       options.remarkPlugins = [...(options.remarkPlugins ?? [])];
-      options.rehypePlugins = [...(options.rehypePlugins ?? []),
+      options.rehypePlugins = [
+        ...(options.rehypePlugins ?? []),
         [
           rehypePrettyCode,
           {
