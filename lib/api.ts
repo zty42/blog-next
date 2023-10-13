@@ -35,7 +35,9 @@ export function getPostMatterByPath(path: string) {
 export function getAllPosts() {
   return getPostPath()
     .map((path) => getPostMatterByPath(path))
-    .sort((a, b) => dateSortDesc(a.frontmatter?.date, b.frontmatter?.date));
+    .filter((post) => !post.frontmatter?.draft)
+    .sort((a, b) => dateSortDesc(a.frontmatter?.date, b.frontmatter?.date))
+    
 }
 
 export function getPostsByPage(page: number = 1, pageSize: number = PAGE_SIZE) {
