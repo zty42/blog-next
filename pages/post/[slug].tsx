@@ -60,7 +60,7 @@ const Content: NextPage<ContentPageProps> = ({ post, prev, next }) => {
       <div className="h-[64px] p-4"></div>
       <div className="flex flex-col flex-1 py-10 w-full max-w-4xl mx-auto animate__animated animate__fadeIn ">
         <h1 className="mb-0">{frontmatter?.title}</h1>
-        <p className="text-sm">
+        <p>
           <span className="mr-4">{frontmatter?.date}</span>
 
           {frontmatter.tags &&

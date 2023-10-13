@@ -42,11 +42,10 @@ const Home: NextPage<PageProps> = ({ posts }) => {
         {posts.map((post, index) => {
           const { frontmatter, slug } = post;
           return (
-            <div key={index} className="justify-center py-4 text-sm">
+            <div key={index} className="justify-center py-4">
               <Link href={`/post/${slug}`} className="no-underline">
                 <p className="font-bold">{frontmatter.title}</p>
               </Link>
-              {/* <p className="text-sm"> */}
                 <span className="mr-2">
                   {formatDate(frontmatter.date)}
                 </span>
@@ -68,7 +67,6 @@ const Home: NextPage<PageProps> = ({ posts }) => {
                       </Link>
                     );
                   })}
-              {/* </p> */}
             </div>
           );
         })}

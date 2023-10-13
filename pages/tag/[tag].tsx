@@ -59,7 +59,7 @@ const TagPage: NextPage<PageProps> = ({ tagGroup,tagName }) => {
                   className="no-underline font-medium"
                 >
                   <p className="mt-1">
-                    <span className=" font-normal text-sm mr-6">
+                    <span className="font-normal mr-6">
                       {formatDate(frontmatter.date)}
                     </span>
                     {frontmatter.title}

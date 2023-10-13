@@ -65,7 +65,7 @@ const Page: NextPage<PageProps> = ({ posts, page, total }) => {
         {posts.map((post, index) => {
           const { frontmatter, slug } = post;
           return (
-            <div key={index} className="justify-center py-4 text-sm">
+            <div key={index} className="justify-center py-4">
               <Link href={`/post/${slug}`} className="no-underline">
                 <p className="font-bold">{frontmatter.title}</p>
               </Link>
