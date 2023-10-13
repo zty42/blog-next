@@ -2,7 +2,6 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import dynamic from "next/dynamic";
-import Head from "next/head";
 interface LayoutProps {
   children: React.ReactNode;
 }
@@ -19,6 +18,7 @@ const Layout = ({ children }: LayoutProps) => {
           min-h-screen px-4 mx-auto
           antialiased 
           prose prose-sm
+          prose-p:my-2
           prose-hr:my-1
           dark:prose-invert"
       >
