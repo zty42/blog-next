@@ -17,8 +17,8 @@ const Layout = ({ children }: LayoutProps) => {
         className="flex flex-col 
           min-h-screen px-4 mx-auto
           antialiased 
-          prose prose-sm
-          prose-p:my-2
+          prose
+          prose-p:mb-2
           prose-hr:my-1
           dark:prose-invert"
       >

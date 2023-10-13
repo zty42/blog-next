@@ -46,7 +46,7 @@ const Home: NextPage<PageProps> = ({ posts }) => {
               <Link href={`/post/${slug}`} className="no-underline">
                 <p className="font-bold">{frontmatter.title}</p>
               </Link>
-              <p className="text-sm">
+              {/* <p className="text-sm"> */}
                 <span className="mr-2">
                   {formatDate(frontmatter.date)}
                 </span>
@@ -68,7 +68,7 @@ const Home: NextPage<PageProps> = ({ posts }) => {
                       </Link>
                     );
                   })}
-              </p>
+              {/* </p> */}
             </div>
           );
         })}
