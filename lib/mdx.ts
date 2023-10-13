@@ -20,7 +20,7 @@ export async function transMdx(path: string) {
               light: "dracula",
             },
           },
-        ],
+        ] as any,
       ];
       return options;
     },
