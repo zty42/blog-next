@@ -67,7 +67,7 @@ const Page: NextPage<PageProps> = ({ posts, page, total }) => {
           return (
             <div key={index} className="justify-center py-4">
               <Link href={`/post/${slug}`} className="no-underline">
-                <p className="font-bold">{frontmatter.title}</p>
+                <h3 className="font-bold">{frontmatter.title}</h3>
               </Link>
               <span className="mr-2">
                 发布于 {formatDate(frontmatter.date)}

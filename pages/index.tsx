@@ -38,13 +38,12 @@ const Home: NextPage<PageProps> = ({ posts }) => {
         </article>
       </header>
       <div className="py-10 animate__animated animate__fadeIn">
-        <h2>All Posts</h2>
         {posts.map((post, index) => {
           const { frontmatter, slug } = post;
           return (
             <div key={index} className="justify-center py-4">
               <Link href={`/post/${slug}`} className="no-underline">
-                <p className="font-bold">{frontmatter.title}</p>
+                <h3 className="font-bold">{frontmatter.title}</h3>
               </Link>
                 <span className="mr-2">
                   {formatDate(frontmatter.date)}
