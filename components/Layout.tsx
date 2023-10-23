@@ -20,6 +20,7 @@ const Layout = ({ children }: LayoutProps) => {
           prose
           prose-p:mb-2
           prose-hr:my-1
+          prose-blockquote:before:content-none
           dark:prose-invert"
       >
         <header>
