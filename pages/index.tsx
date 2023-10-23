@@ -6,6 +6,7 @@ import { getPostsByPage } from "../lib/api";
 import { formatDate } from "../lib/date";
 import { PAGE_SIZE, HEAD_DESCRIPTION, TITLE } from "../config";
 import PageButton from "../components/PageButton";
+import Script from "next/script";
 export function getStaticProps() {
   const posts = getPostsByPage();
 
@@ -42,30 +43,38 @@ const Home: NextPage<PageProps> = ({ posts }) => {
           const { frontmatter, slug } = post;
           return (
             <div key={index} className="justify-center py-4">
+              <Script src="https://www.googletagmanager.com/gtag/js?id=G-WRS7XX17K4" />
+              <Script id="google-analytics">
+                {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+        
+          gtag('config', 'G-WRS7XX17K4');
+        `}
+              </Script>
               <Link href={`/post/${slug}`} className="no-underline">
                 <h3 className="font-bold">{frontmatter.title}</h3>
               </Link>
-                <span className="mr-2">
-                  {formatDate(frontmatter.date)}
-                </span>
-                {frontmatter.tags &&
-                  frontmatter.tags.map((tag, index) => {
-                    return (
-                      <Link
-                        href={`/tag/${tag}`}
-                        className="no-underline"
-                        key={index}
-                      >
-                        <span
-                          className="ml-2 text-[rgb(232,129,88)] 
+              <span className="mr-2">{formatDate(frontmatter.date)}</span>
+              {frontmatter.tags &&
+                frontmatter.tags.map((tag, index) => {
+                  return (
+                    <Link
+                      href={`/tag/${tag}`}
+                      className="no-underline"
+                      key={index}
+                    >
+                      <span
+                        className="ml-2 text-[rgb(232,129,88)] 
                           dark:text-[rgb(211,114,80)]
                           rounded p2"
-                        >
-                          #{tag}
-                        </span>
-                      </Link>
-                    );
-                  })}
+                      >
+                        #{tag}
+                      </span>
+                    </Link>
+                  );
+                })}
             </div>
           );
         })}
