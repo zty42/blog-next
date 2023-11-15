@@ -4,7 +4,7 @@
 @import "animate.css";
 
 body {
-  background-color: @apply bg-white;
+  @apply bg-white;
 }
 
 body.dark {
