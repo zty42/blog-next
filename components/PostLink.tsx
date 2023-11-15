@@ -18,11 +18,7 @@ export default function PostLink({post}: {post: Post}) {
             className="no-underline"
             key={index}
           >
-            <span
-              className="ml-2 text-[rgb(232,129,88)] 
-                dark:text-[rgb(211,114,80)]
-                rounded p2"
-            >
+            <span className="ml-2 rounded p2">
               #{tag}
             </span>
           </Link>

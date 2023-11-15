@@ -4,15 +4,14 @@
 @import "animate.css";
 
 body {
-  background-color: rgb(245, 245, 245);
+  background-color: @apply bg-white;
 }
 
 body.dark {
   background-color: rgb(15 23 42);
 }
-/* [rgb(232,129,88)] dark:text-[rgb(211,114,80)] */
 .hover-link {
-  @apply relative w-fit block after:block after:content-[''] after:absolute after:bottom-2 after:h-[3px] after:bg-[rgb(232,129,88)] dark:after:bg-[rgb(211,114,80)] after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-center;
+  @apply relative w-fit block after:block after:content-[''] after:absolute after:bottom-2 after:h-[3px] after:bg-slate-600 dark:after:bg-white after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-center;
 }
 
 .dark pre[data-theme="light"],

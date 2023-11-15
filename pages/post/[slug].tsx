@@ -59,7 +59,7 @@ const Content: NextPage<ContentPageProps> = ({ post, prev, next }) => {
       </Head>
       <div className="h-[64px] p-4"></div>
       <div className="flex flex-col flex-1 py-10 w-full max-w-4xl mx-auto animate__animated animate__fadeIn ">
-        <h1 className="mb-0">{frontmatter?.title}</h1>
+        <h2>{frontmatter?.title}</h2>
         <p>
           <span className="mr-4">{frontmatter?.date}</span>
 
@@ -69,8 +69,7 @@ const Content: NextPage<ContentPageProps> = ({ post, prev, next }) => {
                 <Link href={`/tag/${tag}`} className="no-underline" key={index}>
                   <span
                     key={index}
-                    className="ml-2 rounded p2
-                text-[rgb(232,129,88)] dark:text-[rgb(211,114,80)]"
+                    className="ml-2 rounded p2"
                   >
                     #{tag}
                   </span>
