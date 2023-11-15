@@ -41,7 +41,7 @@ const Archive: NextPage<PageProps> = ({ tagList }) => {
             >
               <Link href={`/tag/${tag[0]}`}>
                 <div className="justify-center pt-1">
-                  {tag[0]}
+                  #{tag[0]}
                   <span className=" ml-1">({tag[1]})</span>
                 </div>
               </Link>
