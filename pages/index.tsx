@@ -33,7 +33,7 @@ const Home: NextPage<PageProps> = ({ posts }) => {
       <Head>
         <title>{TITLE}</title>
       </Head>
-      <header className="mt-16">
+      <header className="my-8">
         <article>
           <p>{HEAD_DESCRIPTION}</p>
         </article>

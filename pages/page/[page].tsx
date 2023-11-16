@@ -57,7 +57,7 @@ const Page: NextPage<PageProps> = ({ posts, page, total }) => {
       <Head>
         <title>{TITLE}</title>
       </Head>
-      <header className="mt-16">
+      <header className="my-8">
         <article className=" text-xl">
           <p>{HEAD_DESCRIPTION}</p>
         </article>

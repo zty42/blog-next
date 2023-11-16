@@ -26,19 +26,8 @@ const Layout = ({ children }: LayoutProps) => {
       >
         <header>
           <nav className="h-[60px] leading-[60px] flex justify-between items-center">
-            <Link href="/" className="no-underline">
-              <div className="logo text-2xl font-bold">
-                {/* <Image
-                  alt="logo"
-                  src="/logo.svg"
-                  width={40}
-                  height={40}
-                  className="my-0 inline-block hover:rotate-12 transition-all duration-300"
-                /> */}
-                <span className="ml-2"></span>
-              </div>
-            </Link>
-            <div className="flex gap-3 ml-auto">
+
+            <div className="flex gap-3">
               <Link href="/" className="no-underline">
                 <div className="hover-link">首页</div>
               </Link>
