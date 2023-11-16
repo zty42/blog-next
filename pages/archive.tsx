@@ -6,6 +6,7 @@ import { getAllPosts } from "../lib/api";
 import { formatDate } from "../lib/date";
 import { groupBy, sortBy } from "lodash-es";
 import { TITLE } from "../config";
+import PostLink from "../components/PostLink";
 export function getStaticProps() {
   const posts = getAllPosts();
   const postsGroup = groupBy(posts, "yearInfo");
@@ -34,20 +35,21 @@ const Archive: NextPage<PageProps> = ({ postsGroup }) => {
               {postsGroup[year].map((post, index) => {
                 const { frontmatter, slug } = post;
                 return (
-                  <div
-                    key={index}
-                    className="justify-center pt-1 rounded-md border-b-1"
-                  >
-                    <Link
-                      href={`/post/${slug}`}
-                      className="no-underline font-medium"
-                    >
-                      <p className="mt-1">
-                        <span className=" font-normal mr-6">{formatDate(frontmatter.date)}</span>
-                        {frontmatter.title}
-                      </p>
-                    </Link>
-                  </div>
+                  // <div
+                  //   key={index}
+                  //   className="justify-center pt-1 rounded-md border-b-1"
+                  // >
+                  //   <span className=" font-normal mr-6">{formatDate(frontmatter.date)}</span>
+                  //   <Link
+                  //     href={`/post/${slug}`}
+                  //     className="no-underline font-medium"
+                  //   >
+                  //     <p className="mt-1">
+                  //       {frontmatter.title}
+                  //     </p>
+                  //   </Link>
+                  // </div>
+                  <PostLink key={index} post={post} />
                 );
               })}
             </div>

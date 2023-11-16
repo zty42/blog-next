@@ -10,9 +10,6 @@ body {
 body.dark {
   background-color: rgb(28, 31, 33);
 }
-.hover-link {
-  @apply relative w-fit block after:block after:content-[''] after:absolute after:bottom-2 after:h-[3px] after:bg-slate-600 dark:after:bg-white after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-center;
-}
 
 .dark pre[data-theme="light"],
 code[data-theme="light"] {
@@ -31,7 +28,13 @@ code[data-theme="dark"] {
   @apply content-none
 }
 
-a {
+a, button {
   @apply hover:bg-slate-100;
   @apply dark:hover:bg-slate-700 dark:text-[#9fdfff];
+}
+
+.hover-link {
+  @apply relative w-fit block;
+  @apply after:block after:content-[''] after:absolute after:bottom-2 after:h-[3px] after:bg-slate-600;
+  @apply dark:after:bg-[#9fdfff] after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-center;
 }

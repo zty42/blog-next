@@ -1,5 +1,6 @@
 import useDarkMode from "use-dark-mode";
-import Image from "next/image";
+import Moon from "./icons/Moon";
+import Sun from "./icons/Sun";
 const DarkmodeButton = () => {
   const mode = useDarkMode(false, {
     classNameDark: "dark",
@@ -7,16 +8,7 @@ const DarkmodeButton = () => {
   });
 
   return (
-    <button onClick={mode.toggle}>
-      <Image
-        alt="dark mode"
-        src={mode.value ? "/moon.svg" : "/sun.svg"}
-        width={24}
-        height={24}
-        className="my-0 hover:rotate-45 transition-all duration-300"
-        suppressHydrationWarning={true}
-      />
-    </button>
+    <button onClick={mode.toggle}>{mode.value ? <Moon /> : <Sun />}</button>
   );
 };
 

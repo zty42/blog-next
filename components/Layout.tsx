@@ -28,17 +28,20 @@ const Layout = ({ children }: LayoutProps) => {
           <nav className="h-[60px] leading-[60px] flex justify-between items-center">
             <Link href="/" className="no-underline">
               <div className="logo text-2xl font-bold">
-                <Image
+                {/* <Image
                   alt="logo"
                   src="/logo.svg"
                   width={40}
                   height={40}
                   className="my-0 inline-block hover:rotate-12 transition-all duration-300"
-                />
+                /> */}
                 <span className="ml-2"></span>
               </div>
             </Link>
-            <div className="flex gap-3">
+            <div className="flex gap-3 ml-auto">
+              <Link href="/" className="no-underline">
+                <div className="hover-link">首页</div>
+              </Link>
               <Link href="/archive" className="no-underline">
                 <div className="hover-link">归档</div>
               </Link>
@@ -48,9 +51,9 @@ const Layout = ({ children }: LayoutProps) => {
               <Link href="/about" className="no-underline">
                 <div className="hover-link">关于</div>
               </Link>
-              <div className="w-6 flex items-center">
-                <DarkModeButton />
-              </div>
+            </div>
+            <div className=" flex items-center ml-3 h-full">
+              <DarkModeButton />
             </div>
           </nav>
         </header>
