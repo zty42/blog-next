@@ -6,8 +6,11 @@ import { ParsedUrlQuery } from "querystring";
 import { getMDXComponent } from "mdx-bundler/client";
 import { Post } from "../../@types";
 import Head from "next/head";
-import { DiscussionEmbed } from "disqus-react";
 import { TITLE } from "../../config";
+import Giscus from "@giscus/react";
+import Comment from "../../components/Comment";
+import Left from "../../components/icons/Left";
+import Right from "../../components/icons/Right";
 
 interface IParams extends ParsedUrlQuery {
   slug: string;
@@ -67,10 +70,7 @@ const Content: NextPage<ContentPageProps> = ({ post, prev, next }) => {
             frontmatter.tags.map((tag, index) => {
               return (
                 <Link href={`/tag/${tag}`} className="no-underline" key={index}>
-                  <span
-                    key={index}
-                    className="ml-2 rounded p2"
-                  >
+                  <span key={index} className="ml-2 rounded p2">
                     #{tag}
                   </span>
                 </Link>
@@ -82,21 +82,12 @@ const Content: NextPage<ContentPageProps> = ({ post, prev, next }) => {
           <Component></Component>
         </section>
         <hr className="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700" />
-        <DiscussionEmbed
-          shortname="typluto"
-          config={{
-            url: post.slug,
-            identifier: post.slug,
-            title: frontmatter.title,
-            language: "zh",
-          }}
-        />
-
-        <div className="flex justify-between">
+        <div className="flex justify-between my-4">
           <div className="prev">
             {prev && (
               <Link href={`/post/${prev.slug}`} className="no-underline">
                 <span className="flex items-center h-10 hover-link">
+                  <Left />
                   {prev.frontmatter?.title}
                 </span>
               </Link>
@@ -106,12 +97,13 @@ const Content: NextPage<ContentPageProps> = ({ post, prev, next }) => {
             {next && (
               <Link href={`/post/${next.slug}`} className="no-underline">
                 <span className="flex items-center h-10 hover-link">
-                  {next.frontmatter?.title}
+                  {next.frontmatter?.title} <Right />
                 </span>
               </Link>
             )}
           </div>
         </div>
+        <Comment />
       </div>
     </>
   );
