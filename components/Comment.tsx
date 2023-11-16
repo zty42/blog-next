@@ -6,7 +6,7 @@ export default function Comment() {
       <div className="dark-comment">
         <Giscus
           id="comments"
-          repo="zty42/comment"
+          repo="zty42/zty42"
           repoId="R_kgDOKuDEGQ"
           category="Announcements"
           categoryId="DIC_kwDOKuDEGc4Ca_el"
@@ -23,7 +23,7 @@ export default function Comment() {
       <div className="light-comment">
         <Giscus
           id="comments"
-          repo="zty42/comment"
+          repo="zty42/zty42"
           repoId="R_kgDOKuDEGQ"
           category="Announcements"
           categoryId="DIC_kwDOKuDEGc4Ca_el"
