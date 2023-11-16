@@ -5,7 +5,7 @@ import { formatDate } from "../lib/date";
 export default function PostLink({post}: {post: Post}) {
   const { frontmatter, slug } = post;
   return (
-    <div className="py-4 flex">
+    <div className="py-4 flex flex-col sm:flex-row">
     <span className="mr-4">{formatDate(frontmatter.date)}</span>
     <Link href={`/post/${slug}`} className="no-underline">
       {frontmatter.title}
