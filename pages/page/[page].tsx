@@ -58,7 +58,7 @@ const Page: NextPage<PageProps> = ({ posts, page, total }) => {
         <title>{TITLE}</title>
       </Head>
       <header className="my-8">
-        <article className=" text-xl">
+        <article>
           <p>{HEAD_DESCRIPTION}</p>
         </article>
       </header>
@@ -66,6 +66,8 @@ const Page: NextPage<PageProps> = ({ posts, page, total }) => {
         {posts.map((post, index) => {
           return <PostLink post={post} key={index} />;
         })}
+      </div>
+      <div>
         <PrevPageButton />
         <NextPageButton />
       </div>

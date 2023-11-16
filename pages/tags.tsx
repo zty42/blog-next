@@ -32,7 +32,7 @@ const Archive: NextPage<PageProps> = ({ tagList }) => {
         <title>{headTitle}</title>
       </Head>
       <div className="py-10 w-full max-w-4xl mx-auto">
-        <div className=" ">所有标签</div>
+        <h2 className="pt-6">所有标签</h2>
         {tagList.map((tag, index) => {
           return (
             <div
