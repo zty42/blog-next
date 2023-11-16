@@ -8,9 +8,9 @@ export default function PostLink({post}: {post: Post}) {
     <div className="py-4 flex">
     <span className="mr-4">{formatDate(frontmatter.date)}</span>
     <Link href={`/post/${slug}`} className="no-underline">
-      <span className="font-bold">{frontmatter.title}</span>
+      {frontmatter.title}
     </Link>
-    {frontmatter.tags &&
+    {/* {frontmatter.tags &&
       frontmatter.tags.map((tag, index) => {
         return (
           <Link
@@ -23,7 +23,7 @@ export default function PostLink({post}: {post: Post}) {
             </span>
           </Link>
         );
-      })}
+      })} */}
   </div>
   )
 }

@@ -4,7 +4,7 @@ import { parseISO, format } from "date-fns";
  * @param dateStr - The date string to format
  * @returns The formatted date string
  */
-export function formatDate(dateStr: string,formatStr: string = "yyyy-MM-dd"): string {
+export function formatDate(dateStr: string,formatStr: string = "yyyy/MM/dd"): string {
   if (!dateStr) return "";
   return format(parseISO(dateStr), formatStr);
 }

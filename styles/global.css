@@ -8,7 +8,7 @@ body {
 }
 
 body.dark {
-  background-color: rgb(15 23 42);
+  background-color: rgb(28, 31, 33);
 }
 .hover-link {
   @apply relative w-fit block after:block after:content-[''] after:absolute after:bottom-2 after:h-[3px] after:bg-slate-600 dark:after:bg-white after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-center;
@@ -29,4 +29,9 @@ code[data-theme="dark"] {
 
 .prose :where(blockquote p:first-of-type):not(:where([class~="not-prose"] *))::before {
   @apply content-none
+}
+
+a {
+  @apply hover:bg-slate-100;
+  @apply dark:hover:bg-slate-700 dark:text-[#9fdfff];
 }
