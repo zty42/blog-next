@@ -19,9 +19,9 @@ export default function Header() {
           <Link href="/tags" className="no-underline">
             <div className="hover-link">标签</div>
           </Link>
-          <Link href="/about" className="no-underline">
+          {/* <Link href="/about" className="no-underline">
             <div className="hover-link">关于</div>
-          </Link>
+          </Link> */}
         </div>
         <div className=" flex items-center ml-3 h-full">
           <DarkModeButton />
