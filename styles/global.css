@@ -33,7 +33,7 @@ code[data-theme="dark"] {
 }
 
 a, button {
-  @apply hover:bg-slate-100;
+  @apply hover:bg-slate-100 text-[#3451b2];
   @apply dark:hover:bg-slate-700 dark:text-[#9fdfff];
 }
 
@@ -42,3 +42,4 @@ a, button {
   @apply after:block after:content-[''] after:absolute after:bottom-2 after:h-[3px] after:bg-slate-600;
   @apply dark:after:bg-[#9fdfff] after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-center;
 }
+
