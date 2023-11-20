@@ -10,7 +10,7 @@ export default function Custom404() {
       <div className="flex flex-col justify-center items-center flex-1">
         <p>404</p>
         <Link href="/" className="no-underline">
-          <div className="hover-link">返回首页</div>
+          返回首页
         </Link>
       </div>
     </>
