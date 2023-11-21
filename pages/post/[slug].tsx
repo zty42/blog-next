@@ -7,7 +7,6 @@ import { getMDXComponent } from "mdx-bundler/client";
 import { Post } from "../../@types";
 import Head from "next/head";
 import { TITLE } from "../../config";
-import Giscus from "@giscus/react";
 import Comment from "../../components/Comment";
 import Left from "../../components/icons/Left";
 import Right from "../../components/icons/Right";
