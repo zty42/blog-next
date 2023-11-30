@@ -15,10 +15,7 @@ export async function transMdx(path: string) {
         [
           rehypePrettyCode,
           {
-            theme: {
-              dark: "dracula-soft",
-              light: "dracula",
-            },
+            theme: "dracula-soft"
           },
         ] as any,
       ];
@@ -31,4 +28,11 @@ export async function transMdx(path: string) {
   });
 
   return { code, frontmatter };
+}
+
+export async function transMemoMdContent(content: string) {
+  const { code } = await bundleMDX({
+    source: content,
+  });
+  return code
 }
