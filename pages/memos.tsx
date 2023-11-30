@@ -23,11 +23,13 @@ interface Memo {
 }
 
 export async function getStaticProps() {
-  const res = await fetch("https://memo.zty95.com/api/v1/memo?creatorId=1");
+  const res = await fetch(
+    "https://memo.zty95.com/api/v1/memo?creatorId=1&tag=memo"
+  );
   const originMemos = await res.json();
   const memos = originMemos.map(async (memo: Memo) => {
     const { content } = memo;
-    const mdContent = await transMemoMdContent(content);
+    const mdContent = await transMemoMdContent(content.replace("#memo", ""));
     return {
       ...memo,
       content: mdContent,
@@ -61,11 +63,10 @@ const Memo = ({ memo }: { memo: Memo }) => {
           <div className="panda-link col-start-2 col-span-3 flex"></div>
           <div className="font-medium italic col-span-1"></div>
           <div className=" col-span-2 flex">
-            {" "}
             <time className="italic opacity-70 ml-auto mr-4">
               {memo.createAt}
-            </time>{" "}
-          </div>{" "}
+            </time>
+          </div>
         </div>
         <div className="prose prose-stone dark:prose-invert  p-2">
           <Component></Component>
