@@ -7,9 +7,9 @@ import { getMDXComponent } from "mdx-bundler/client";
 import { Post } from "../../@types";
 import Head from "next/head";
 import { TITLE } from "../../config";
-import Comment from "../../components/Comment";
-import Left from "../../components/icons/Left";
-import Right from "../../components/icons/Right";
+// import Comment from "../../components/Comment";
+// import Left from "../../components/icons/Left";
+// import Right from "../../components/icons/Right";
 
 interface IParams extends ParsedUrlQuery {
   slug: string;
@@ -26,14 +26,14 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const allPosts = getAllPosts();
   const postIndex = allPosts.findIndex((post) => post.slug === slug);
   const postFilePath = allPosts[postIndex].filePath;
-  const prev = allPosts[postIndex - 1] || null;
-  const next = allPosts[postIndex + 1] || null;
+  // const prev = allPosts[postIndex - 1] || null;
+  // const next = allPosts[postIndex + 1] || null;
   const post = await getPostContentByFilePath(postFilePath);
   return {
     props: {
       post,
-      prev,
-      next,
+      // prev,
+      // next,
     },
   };
 };
@@ -48,7 +48,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
     fallback: false,
   };
 };
-const Content: NextPage<ContentPageProps> = ({ post, prev, next }) => {
+const Content: NextPage<ContentPageProps> = ({ post }) => {
   const { code, frontmatter } = post;
   const Component = useMemo(() => getMDXComponent(code), [code]);
   const { title } = frontmatter;
@@ -59,7 +59,6 @@ const Content: NextPage<ContentPageProps> = ({ post, prev, next }) => {
       <Head>
         <title>{headTitle}</title>
       </Head>
-      <div className="h-[64px] p-4"></div>
       <div className="flex flex-col flex-1 py-10 w-full max-w-4xl mx-auto animate__animated animate__fadeIn ">
         <h2>{frontmatter?.title}</h2>
         <p>
@@ -81,7 +80,13 @@ const Content: NextPage<ContentPageProps> = ({ post, prev, next }) => {
           <Component></Component>
         </section>
         <hr className="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700" />
-        <div className="flex justify-between my-4">
+        <div className="my-8">
+          <span>{">"}</span>
+          <Link href="/" className="no-underline">
+            <span className="ml-2 rounded p2">cd ..</span>
+          </Link>
+        </div>
+        {/* <div className="flex justify-between my-4">
           <div className="prev">
             {prev && (
               <Link href={`/post/${prev.slug}`} className="no-underline">
@@ -101,8 +106,8 @@ const Content: NextPage<ContentPageProps> = ({ post, prev, next }) => {
               </Link>
             )}
           </div>
-        </div>
-        <Comment />
+        </div> */}
+        {/* <Comment /> */}
       </div>
     </>
   );

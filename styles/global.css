@@ -4,14 +4,14 @@
 @import "animate.css";
 
 body {
-  @apply bg-white;
+  @apply bg-zinc-100;
 }
 
 body.dark {
-  background-color: rgb(28, 31, 33);
+  @apply bg-zinc-800;
 }
 
-.dark pre[data-theme="light"],
+/* .dark pre[data-theme="light"],
 code[data-theme="light"] {
   display: none;
 }
@@ -19,21 +19,13 @@ code[data-theme="light"] {
 .light pre[data-theme="dark"],
 code[data-theme="dark"] {
   display: none;
-}
+} */
 
 .dark .light-comment,
 .light .dark-comment {
   display: none;
 }
 
-
-
 .prose :where(blockquote p:first-of-type):not(:where([class~="not-prose"] *))::before {
   @apply content-none
 }
-
-a, button {
-  @apply hover:bg-slate-100 text-[#3451b2];
-  @apply dark:hover:bg-slate-700 dark:text-[#9fdfff];
-}
-
