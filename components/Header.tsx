@@ -19,9 +19,6 @@ export default function Header() {
           <Link href="/tags" className="no-underline">
             标签
           </Link>
-          <Link href="/memos" className="no-underline">
-            MEMO
-          </Link>
           {/* <Link href="/about" className="no-underline">关于</Link> */}
         </div>
         <div className=" flex items-center ml-3 h-full">
