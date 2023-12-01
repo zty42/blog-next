@@ -21,7 +21,7 @@ interface Memo {
   creatorName: string;
   creatorUsername: string;
 }
-export const config = { runtime: 'edge' };
+export const runtime = 'edge';
 
 export async function getStaticProps() {
   const res = await fetch(
