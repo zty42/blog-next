@@ -22,7 +22,7 @@ interface Memo {
   creatorUsername: string;
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const res = await fetch(
     "https://memo.zty95.com/api/v1/memo?creatorId=1&tag=memo"
   );
