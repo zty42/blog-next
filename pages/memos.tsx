@@ -23,7 +23,7 @@ interface Memo {
 }
 export const config = { runtime: 'edge' };
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
   const res = await fetch(
     "https://memo.zty95.com/api/v1/memo?creatorId=1&tag=memo"
   );
