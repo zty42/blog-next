@@ -21,7 +21,7 @@ interface Memo {
   creatorName: string;
   creatorUsername: string;
 }
-// export const runtime = 'experimental-edge';
+export const config = { runtime: 'edge' };
 
 export async function getServerSideProps() {
   const res = await fetch(
