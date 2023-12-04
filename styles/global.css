@@ -21,11 +21,9 @@ code[data-theme="dark"] {
   display: none;
 } */
 
-.dark .light-comment,
+/* .dark .light-comment,
 .light .dark-comment {
   display: none;
-}
+} */
 
-.prose :where(blockquote p:first-of-type):not(:where([class~="not-prose"] *))::before {
-  @apply content-none
-}
+

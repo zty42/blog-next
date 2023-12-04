@@ -10,16 +10,10 @@ export default function Header() {
     <header>
       <nav className="h-[60px] leading-[60px] flex justify-between items-center font-bold">
         <div className="flex gap-3">
-          <Link href="/" className="no-underline">
-            首页
-          </Link>
-          <Link href="/archive" className="no-underline">
-            归档
-          </Link>
-          <Link href="/tags" className="no-underline">
-            标签
-          </Link>
-          {/* <Link href="/about" className="no-underline">关于</Link> */}
+          <Link href="/">首页</Link>
+          <Link href="/archive">归档</Link>
+          <Link href="/tags">标签</Link>
+          {/* <Link href="/about" >关于</Link> */}
         </div>
         <div className=" flex items-center ml-3 h-full">
           <DarkModeButton />
