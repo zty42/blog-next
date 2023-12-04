@@ -11,19 +11,4 @@ body.dark {
   @apply bg-zinc-800;
 }
 
-/* .dark pre[data-theme="light"],
-code[data-theme="light"] {
-  display: none;
-}
-
-.light pre[data-theme="dark"],
-code[data-theme="dark"] {
-  display: none;
-} */
-
-/* .dark .light-comment,
-.light .dark-comment {
-  display: none;
-} */
-
 
