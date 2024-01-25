@@ -37,7 +37,7 @@ export default async function TagsPage() {
       <h2 className="pt-6">所有标签</h2>
       {tagList.map((tag, index) => {
         return (
-          <Link href={`/tag/${encodeURIComponent(tag.tagName)}`} key={index}>
+          <Link href={`/tag/${tag.tagName}`} key={index}>
             <Button key={index} variant="ghost">
               <Tag className="w-4 h-4 mr-1" />
               {tag.tagName}({tag.tagCount})
