@@ -1,15 +1,13 @@
 import { bundleMDX } from "mdx-bundler";
-import { readFile } from "node:fs/promises";
-import { Frontmatter } from "../@types";
 import rehypePrettyCode from "rehype-pretty-code";
-// import remarkGfm from "remark-gfm";
+import remarkGfm from "remark-gfm";
+import type { Frontmatter } from "@/types/frontmatter";
 
-export async function transMdx(path: string) {
-  const fileContents = await readFile(path, "utf8");
-  const { code, frontmatter } = await bundleMDX({
-    source: fileContents,
+export async function transMdx(source: string) {
+  const { code, frontmatter } = await bundleMDX<Frontmatter>({
+    source,
     mdxOptions(options, frontmatter) {
-      options.remarkPlugins = [...(options.remarkPlugins ?? [])];
+      options.remarkPlugins = [...(options.remarkPlugins ?? []), remarkGfm];
       options.rehypePlugins = [
         ...(options.rehypePlugins ?? []),
         [
@@ -17,7 +15,7 @@ export async function transMdx(path: string) {
           {
             theme: "dracula-soft"
           },
-        ] as any,
+        ],
       ];
       return options;
     },
@@ -30,9 +28,3 @@ export async function transMdx(path: string) {
   return { code, frontmatter };
 }
 
-export async function transMemoMdContent(content: string) {
-  const { code } = await bundleMDX({
-    source: content,
-  });
-  return code
-}
