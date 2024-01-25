@@ -19,7 +19,7 @@ export async function generateStaticParams() {
     }, [])
     .map((tag) => {
       return {
-        tag: encodeURIComponent(tag),
+        tag,
       };
     });
 }
