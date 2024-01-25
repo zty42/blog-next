@@ -30,7 +30,7 @@ export async function generateMetadata(
 ): Promise<Metadata> {
   const { tag } = params;
   return {
-    title: `${decodeURIComponent(tag)} • ${(await parent).title?.absolute} `,
+    title: `${tag} • ${(await parent).title?.absolute} `,
   };
 }
 
@@ -38,14 +38,12 @@ export default async function TagPage({ params }: TagPageProps) {
   const { tag } = params;
   const posts: Post[] = await getAllPosts();
   const filterPosts = posts.filter((post) =>
-    post.frontmatter.tags.includes(decodeURIComponent(tag))
+    post.frontmatter.tags.includes(tag)
   );
 
   return (
     <main className="mt-10">
-      <h2 className="tracking-wider py-3 text-3xl font-semibold">
-        #{decodeURIComponent(tag)}
-      </h2>
+      <h2 className="tracking-wider py-3 text-3xl font-semibold">#{tag}</h2>
       {filterPosts.map((post, index) => {
         return (
           <Link
