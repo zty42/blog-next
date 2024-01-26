@@ -41,8 +41,6 @@ export default async function TagPage({ params }: TagPageProps) {
     post.frontmatter.tags.includes(decodeURIComponent(tag))
   );
 
-  console.log(tag,decodeURIComponent(tag))
-
   return (
     <main className="mt-10">
       <h2 className="tracking-wider py-3 text-3xl font-semibold">#{decodeURIComponent(tag)}</h2>

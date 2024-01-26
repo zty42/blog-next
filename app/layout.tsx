@@ -15,6 +15,7 @@ export const metadata: Metadata = {
   twitter: {
     images: ["https://source.unsplash.com/random/800x450/?city,night"],
   },
+  metadataBase: new URL('https://zty95.com')
 };
 
 export default function RootLayout({
