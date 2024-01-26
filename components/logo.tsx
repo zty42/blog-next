@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import { Code2 } from "lucide-react";
 export const Logo = () => {
