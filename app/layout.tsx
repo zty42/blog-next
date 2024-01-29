@@ -32,7 +32,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <div className="flex flex-col  min-h-screen px-4 mx-auto antialiased max-w-3xl font-mono">
+          <div className="flex flex-col  min-h-screen px-4 mx-auto antialiased max-w-3xl font-sans">
             <Navbar />
             <main className="flex-grow flex flex-col w-full">
               {children}
