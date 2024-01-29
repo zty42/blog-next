@@ -6,6 +6,7 @@ const nextConfig = {
   output: 'export',
   pageExtensions: ['js', 'jsx', 'mdx', 'ts', 'tsx'],
   images: {
+    unoptimized: true,
     domains: ["images.unsplash.com", "ghchart.rshah.org"],
     remotePatterns: [
       {

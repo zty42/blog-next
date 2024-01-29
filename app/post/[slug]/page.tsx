@@ -1,4 +1,5 @@
 import type { Metadata, ResolvingMetadata } from "next";
+import Image from "next/image";
 import { getAllPosts, getPostBySlug } from "@/lib/api";
 import components from "@/components/mdx-components";
 import { CalendarDays, Tag } from "lucide-react";
@@ -32,11 +33,20 @@ export async function generateStaticParams() {
 export default async function PostPage({ params }: PostPageProps) {
   const post = await getPostBySlug(params.slug);
   const { code, frontmatter } = post;
-  const { tags, title, date } = frontmatter;
+  const { tags, title, date, image } = frontmatter;
   const MdComponent = getMDXComponent(code);
 
   return (
     <>
+      {image && (
+        <Image
+          src={image}
+          width="800"
+          height={200}
+          alt={title}
+          className="w-full"
+        />
+      )}
       <h1 className="text-3xl font-extrabold tracking-tight mt-6">{title}</h1>
       <div className="my-2">
         <time className="pr-2 inline-flex items-center gap-x-1">
@@ -53,7 +63,7 @@ export default async function PostPage({ params }: PostPageProps) {
           </>
         )}
       </div>
-      <article className="my-10">
+      <article className="my-2">
         <MdComponent components={components} />
       </article>
     </>
