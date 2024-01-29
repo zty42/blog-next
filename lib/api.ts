@@ -13,7 +13,7 @@ export const getPosts = cache(async (): Promise<string[]> => {
 
 export const getAllPosts = cache(async () => {
   const posts = await glob(`_posts/**/*.{md,mdx}`);
-  const res = await Promise.all(
+  return (await Promise.all(
     posts.map(async (post): Promise<Post> => {
       const slug = path.basename(post).replace(/\.mdx?$/, "");
       const fileContent = await fs.readFile(post, "utf8");
@@ -24,13 +24,12 @@ export const getAllPosts = cache(async () => {
         frontmatter,
       };
     })
-  );
-  return res.sort((a, b) => {
+  )).sort((a, b) => {
     return (
       new Date(b.frontmatter.date).getTime() -
       new Date(a.frontmatter.date).getTime()
-    );
-  });
+    )
+  })
 });
 
 export const getIndexPosts = cache(async (): Promise<Post[]> => {
