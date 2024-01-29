@@ -12,17 +12,17 @@ const components = {
     </h2>
   ),
   h3: (props: DetailedHTMLProps<HTMLAttributes<HTMLHeadingElement>, HTMLHeadingElement>) => (
-    <h3 {...props} className="text-lg font-semibold tracking-tight mt-6">
+    <h3 {...props} className="text-lg font-semibold tracking-tight mt-4">
       {props.children}
     </h3>
   ),
   h4: (props:DetailedHTMLProps<HTMLAttributes<HTMLHeadingElement>, HTMLHeadingElement>) => (
-    <h4 {...props} className="text-lg font-semibold tracking-tight mt-6">
+    <h4 {...props} className="text-lg font-semibold tracking-tight mt-4">
       {props.children}
     </h4>
   ),
   p: (props:DetailedHTMLProps<HTMLAttributes<HTMLParagraphElement>, HTMLParagraphElement>) => (
-    <p {...props} className="leading-7 [&:not(:first-child)]:mt-6">
+    <p {...props} className="leading-7 [&:not(:first-child)]:mt-4">
       {props.children}
     </p>
   ),
