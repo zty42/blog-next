@@ -76,7 +76,7 @@
 
   /* code block style start */
   pre {
-    @apply p-1 overflow-x-auto rounded-md;
+    @apply px-1 py-4 overflow-x-auto rounded-md;
   }
   pre [data-line] {
     padding: 0 1rem;

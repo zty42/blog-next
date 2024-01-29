@@ -49,7 +49,7 @@ export default async function TagPage({ params }: TagPageProps) {
           <Link
             key={post.slug}
             href={`/post/${post.slug}`}
-            className="no-underline py-3 flex flex-col-reverse md:flex-row"
+            className=" py-3 flex flex-col-reverse md:flex-row"
           >
             <time className="mr-4 opacity-50 md:opacity-100">
               {post.frontmatter.date}
