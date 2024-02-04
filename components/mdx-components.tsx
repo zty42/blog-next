@@ -54,9 +54,16 @@ const components = {
   ul: (
     props: DetailedHTMLProps<HTMLAttributes<HTMLUListElement>, HTMLUListElement>
   ) => (
-    <ul {...props} className="my-4 ml-4 list-disc [&>li]:mt-2">
+    <ul {...props} className="ml-4 list-disc">
       {props.children}
     </ul>
+  ),
+  li: (
+    props: DetailedHTMLProps<HTMLAttributes<HTMLLIElement>, HTMLLIElement>
+  ) => (
+    <li {...props} className="ml-4">
+      {props.children}
+    </li>
   ),
 };
 
