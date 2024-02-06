@@ -65,6 +65,13 @@ const components = {
       {props.children}
     </li>
   ),
+  blockquote: (
+    props: DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement>
+  ) => (
+    <blockquote className="py-4 px-2 my-4 border-s-4 border-gray-300 bg-gray-50 dark:border-gray-500 dark:bg-gray-800">
+      {props.children}
+    </blockquote>
+  ),
 };
 
 export default components;
