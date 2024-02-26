@@ -47,7 +47,7 @@ export default async function PostPage({ params }: PostPageProps) {
           className="w-full"
         />
       )}
-      <h1 className="text-3xl font-extrabold tracking-tight mt-6">{title}</h1>
+      <h1 className="text-3xl font-extrabold tracking-tight my-6">{title}</h1>
       <div className="my-2">
         <time className="pr-2 inline-flex items-center gap-x-1">
           <CalendarDays className=" w-3 h-3 inline-block" /> {date}
