@@ -1,7 +1,7 @@
 import { Header } from "@/components/header";
 import { getAllPosts } from "@/lib/api";
 import Link from "next/link";
-
+import { Button } from "@/components/ui/button";
 export default async function HomePage() {
   const posts = await getAllPosts();
   return (
@@ -12,17 +12,15 @@ export default async function HomePage() {
           return (
             <div
               key={post.slug}
-              className="py-3 flex flex-col-reverse md:flex-row hover:bg-[#fcf5f5]"
+              className="pb-1 flex flex-col-reverse md:flex-row items-center"
             >
               <time className="mr-4 opacity-50 md:opacity-100">
                 {post.frontmatter.date}
               </time>
-              <Link
-                key={post.slug}
-                href={`/post/${post.slug}`}
-                // className="py-3 flex flex-col-reverse md:flex-row"
-              >
-                <h1>{post.frontmatter.title}</h1>
+              <Link key={post.slug} href={`/post/${post.slug}`}>
+                <Button variant="ghost" size="sm" asChild>
+                  <h1>{post.frontmatter.title}</h1>
+                </Button>
               </Link>
             </div>
           );
