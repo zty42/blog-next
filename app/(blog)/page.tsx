@@ -12,7 +12,7 @@ export default async function HomePage() {
           return (
             <div
               key={post.slug}
-              className="pb-1 flex flex-col-reverse md:flex-row items-center"
+              className="pb-1 flex flex-col-reverse md:flex-row md:items-center"
             >
               <time className="mr-4 opacity-50 md:opacity-100">
                 {post.frontmatter.date}
