@@ -12,15 +12,13 @@ export default async function HomePage() {
           return (
             <div
               key={post.slug}
-              className="pb-1 flex flex-col-reverse md:flex-row md:items-center"
+              className="pb-1 flex flex-col-reverse md:flex-row md:items-center mt-2"
             >
               <time className="mr-4 opacity-50 md:opacity-100">
                 {post.frontmatter.date}
               </time>
               <Link key={post.slug} href={`/post/${post.slug}`}>
-                <Button variant="ghost" size="sm" asChild>
-                  <h1>{post.frontmatter.title}</h1>
-                </Button>
+                <h1>{post.frontmatter.title}</h1>
               </Link>
             </div>
           );
