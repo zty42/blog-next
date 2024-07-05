@@ -14,7 +14,7 @@ export default async function HomePage() {
               key={post.slug}
               className="pb-1 flex flex-col-reverse md:flex-row md:items-center mt-2"
             >
-              <time className="mr-4 opacity-50 md:opacity-100">
+              <time className="mr-4 opacity-50">
                 {post.frontmatter.date}
               </time>
               <Link key={post.slug} href={`/post/${post.slug}`}>
