@@ -21,12 +21,12 @@ export const Navbar = () => {
       <div className="ml-auto justify-end flex items-center">
         <Button variant="ghost" size="sm" asChild>
           <Link href="/archive" className="">
-            Archive
+            归档
           </Link>
         </Button>
         <Button variant="ghost" size="sm" asChild>
           <Link href="/tags" className="">
-            Tags
+            标签
           </Link>
         </Button>
         <ModeToggle />
