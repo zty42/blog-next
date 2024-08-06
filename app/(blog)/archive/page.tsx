@@ -12,7 +12,7 @@ export default async function ArchivePage() {
   const posts: Post[] = await getAllPosts();
   const postsGroup = groupBy(posts, ({ frontmatter }: Post) => {
     const { date } = frontmatter;
-    return date.split("-")[0];
+    return date.split("/")[0];
   });
 
   const yearArray: string[] = sortBy(Object.keys(postsGroup), (year: string) =>
@@ -33,7 +33,7 @@ export default async function ArchivePage() {
                     href={`/post/${post.slug}`}
                     className=" py-3 flex flex-col-reverse md:flex-row"
                   >
-                    <time className="mr-4 opacity-50 md:opacity-100">
+                    <time className="mr-4 opacity-50">
                       {post.frontmatter.date}
                     </time>
                     <h1>{post.frontmatter.title}</h1>
