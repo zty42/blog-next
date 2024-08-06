@@ -3,7 +3,6 @@
 import Link from "next/link";
 
 import { ModeToggle } from "@/components/mode-toggle";
-import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
 import { Logo } from "./logo";
@@ -18,17 +17,13 @@ export const Navbar = () => {
       )}
     >
       <Logo />
-      <div className="ml-auto justify-end flex items-center">
-        <Button variant="ghost" size="sm" asChild>
-          <Link href="/archive" className="">
-            归档
-          </Link>
-        </Button>
-        <Button variant="ghost" size="sm" asChild>
-          <Link href="/tags" className="">
-            标签
-          </Link>
-        </Button>
+      <div className="ml-auto justify-end flex items-center gap-2">
+        <Link href="/archive" className="">
+          归档
+        </Link>
+        <Link href="/tags" className="">
+          标签
+        </Link>
         <ModeToggle />
       </div>
     </div>

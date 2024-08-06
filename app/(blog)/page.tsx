@@ -12,11 +12,9 @@ export default async function HomePage() {
           return (
             <div
               key={post.slug}
-              className="pb-1 flex flex-col-reverse md:flex-row md:items-center mt-2"
+              className="py-2 flex flex-col-reverse md:flex-row md:items-center mt-2"
             >
-              <time className="mr-4 opacity-50">
-                {post.frontmatter.date}
-              </time>
+              <time className="mr-4 opacity-50">{post.frontmatter.date}</time>
               <Link key={post.slug} href={`/post/${post.slug}`}>
                 <h1>{post.frontmatter.title}</h1>
               </Link>
