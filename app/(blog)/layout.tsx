@@ -25,16 +25,16 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={cn("min-h-screen bg-background antialiased")}>
+      <body className={cn("min-h-screen bg-background antialiased bg-dot")}>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
           enableSystem
           disableTransitionOnChange
         >
-          <div className="flex flex-col  min-h-screen px-4 mx-auto antialiased max-w-3xl font-sans">
+          <div className="flex flex-col  min-h-screen px-4 mx-auto antialiased max-w-3xl font-sans z-50">
             <Navbar />
-            <main className="flex-grow flex flex-col w-full">
+            <main className="flex-grow flex flex-col w-full z-50">
               {children}
             </main>
             <Footer />
