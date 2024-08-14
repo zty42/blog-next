@@ -72,6 +72,13 @@ const components = {
       {props.children}
     </blockquote>
   ),
+  pre: (
+    props: DetailedHTMLProps<HTMLAttributes<HTMLPreElement>, HTMLPreElement>
+  ) => (
+    <pre {...props} className="bg-gray-100 p-4 rounded-md">
+      {props.children}
+    </pre>
+  ),
 };
 
 export default components;
