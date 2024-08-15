@@ -10,10 +10,10 @@ export const metadata: Metadata = {
   description: "个人博客，文字、代码、照片，记录工作和生活",
   keywords: ["blog", "zty42"],
   openGraph: {
-    images: ["https://source.unsplash.com/random/800x450/?city,night"],
+    images: ["https://images.unsplash.com/photo-1505980107580-8aa7bcd3f8df"],
   },
   twitter: {
-    images: ["https://source.unsplash.com/random/800x450/?city,night"],
+    images: ["https://images.unsplash.com/photo-1505980107580-8aa7bcd3f8df"],
   },
   metadataBase: new URL('https://zty95.com')
 };

@@ -1,7 +1,7 @@
 import { Header } from "@/components/header";
 import { getAllPosts } from "@/lib/api";
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
+
 export default async function HomePage() {
   const posts = await getAllPosts();
   return (
