@@ -7,10 +7,10 @@ export const Header = () => {
         <p>个人博客，文字、代码、照片，记录工作和生活</p>
       </article>
       <div className="flex gap-x-4 mt-4">
-        <Link href="/archive" className="underline">
+        <Link href="/archive" className="hover:underline">
           归档
         </Link>
-        <Link href="/tags" className="underline">
+        <Link href="/tags" className="hover:underline">
           标签
         </Link>
       </div>

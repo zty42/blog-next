@@ -1,9 +1,11 @@
 import { Header } from "@/components/header";
-import { getAllPosts } from "@/lib/api";
+import { getLatestPosts} from "@/lib/api";
 import Link from "next/link";
+import { 
+  ChevronRight } from "lucide-react";
 
 export default async function HomePage() {
-  const posts = await getAllPosts();
+  const posts = await getLatestPosts(10);
   return (
     <main className="flex flex-col">
       <Header />
@@ -21,6 +23,12 @@ export default async function HomePage() {
             </div>
           );
         })}
+      </div>
+      <div>
+        <Link href="/archive">
+        <ChevronRight className="inline w-4 h-4 mr-1" />
+        查看全部
+        </Link>
       </div>
     </main>
   );

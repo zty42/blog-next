@@ -32,6 +32,12 @@ export const getAllPosts = cache(async () => {
   })
 });
 
+export const getLatestPosts = cache(async (count: number): Promise<Post[]> => {
+  const posts = await getAllPosts();
+  return posts.slice(0, count);
+});
+
+
 export const getIndexPosts = cache(async (): Promise<Post[]> => {
   const posts = await getAllPosts();
   return posts

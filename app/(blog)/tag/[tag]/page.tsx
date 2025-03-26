@@ -10,18 +10,27 @@ interface TagPageProps {
 
 export async function generateStaticParams() {
   const posts: Post[] = await getAllPosts();
-  return posts
+  const tags = posts
     .map((post) => post.frontmatter.tags)
     .flat()
-    .reduce((res: string[], name: string) => {
-      res.includes(name) ? res : res.push(name);
+    .reduce((res: string[], name) => {
+      if (!res.includes(name)) {
+        res.push(name);
+      }
       return res;
-    }, [])
-    .map((tag) => {
-      return {
-        tag,
-      };
-    });
+    }, []);
+  console.log(tags);
+
+  const params = tags.map((tag) => ({
+    tag: encodeURIComponent(tag),
+  }));
+  console.log("Generated params:", params); // 打印最终返回的参数对象数组
+
+  // 临时检查特定标签是否存在
+  const hasZhuiJu = params.some((p) => p.tag === "追剧");
+  console.log('Does params include "追剧"?', hasZhuiJu);
+
+  return params;
 }
 
 export async function generateMetadata(
@@ -43,7 +52,9 @@ export default async function TagPage({ params }: TagPageProps) {
 
   return (
     <main className="mt-10">
-      <h2 className="tracking-wider py-3 text-3xl font-semibold">#{decodeURIComponent(tag)}</h2>
+      <h2 className="tracking-wider py-3 text-3xl font-semibold">
+        #{decodeURIComponent(tag)}
+      </h2>
       {filterPosts.map((post, index) => {
         return (
           <Link
