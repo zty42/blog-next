@@ -117,6 +117,7 @@ html:not(.dark) {
   content: "";
   position: absolute;
   inset: 0;
+  z-index: -1;
   background: linear-gradient(90deg, var(--dot-bg-color) 22px, transparent 1%) 50%, linear-gradient(var(--dot-bg-color) 22px, transparent 1%) 50%, var(--dot-color);
   background-position: center center;
   background-size: 24px 24px;

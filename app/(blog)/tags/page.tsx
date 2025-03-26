@@ -33,8 +33,8 @@ export default async function TagsPage() {
     });
 
   return (
-    <main className="mt-10">
-      <h2 className="pt-6">所有标签</h2>
+    <main>
+      <h2 className="text-2xl font-bold tracking-tight mb-4">所有标签</h2>
       {tagList.map((tag, index) => {
         return (
           <Link href={`/tag/${tag.tagName}`} key={index}>

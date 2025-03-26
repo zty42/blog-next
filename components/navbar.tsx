@@ -11,7 +11,7 @@ export const Navbar = () => {
   return (
     <div
       className={cn(
-        "flex justify-between items-center my-4 z-50"
+        "flex justify-between items-center mt-4 "
       )}
     >
       <Logo />

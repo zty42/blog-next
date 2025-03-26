@@ -1,14 +1,12 @@
 import { Header } from "@/components/header";
 import { getLatestPosts} from "@/lib/api";
 import Link from "next/link";
-import { 
-  ChevronRight } from "lucide-react";
 
 export default async function HomePage() {
-  const posts = await getLatestPosts(10);
+  const posts = await getLatestPosts(8);
   return (
     <main className="flex flex-col">
-      <Header />
+      <h1 className="text-3xl font-bold tracking-tight mb-6">Latest Posts</h1>
       <div>
         {posts.map((post) => {
           return (
@@ -25,9 +23,8 @@ export default async function HomePage() {
         })}
       </div>
       <div>
-        <Link href="/archive">
-        <ChevronRight className="inline w-4 h-4 mr-1" />
-        查看全部
+        <Link href="/archive" className="hover:underline">
+        View all posts
         </Link>
       </div>
     </main>

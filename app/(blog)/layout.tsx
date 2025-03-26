@@ -4,6 +4,7 @@ import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 import { cn } from "@/lib/utils";
 import "@/styles/globals.css";
+import { Header } from "@/components/header";
 
 export const metadata: Metadata = {
   title: "zty's blog",
@@ -32,9 +33,10 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <div className="flex flex-col  min-h-screen px-4 mx-auto antialiased max-w-3xl font-mono z-50">
+          <div className="flex flex-col  min-h-screen px-4 mx-auto antialiased max-w-3xl font-mono ">
             <Navbar />
-            <main className="flex-grow flex flex-col w-full z-50">
+            <Header />
+            <main className="flex-grow flex flex-col w-full 0">
               {children}
             </main>
             <Footer />
