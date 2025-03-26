@@ -5,7 +5,7 @@ import { groupBy, sortBy } from "lodash-es";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "archive • zty's blog",
+  title: "Archive • zty's blog",
 };
 
 export default async function ArchivePage() {

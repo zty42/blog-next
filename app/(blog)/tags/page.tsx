@@ -10,7 +10,7 @@ type TagObject = {
 };
 
 export const metadata: Metadata = {
-  title: "tags • zty's blog",
+  title: "Tags • zty's blog",
 };
 
 export default async function TagsPage() {
