@@ -75,9 +75,16 @@ const components = {
   pre: (
     props: DetailedHTMLProps<HTMLAttributes<HTMLPreElement>, HTMLPreElement>
   ) => (
-    <pre {...props} className="bg-gray-100 p-4 rounded-md">
+    <pre {...props} className="overflow-x-auto rounded-lg my-4">
       {props.children}
     </pre>
+  ),
+  code: (
+    props: DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement>
+  ) => (
+    <code {...props} className="px-6 py-4">
+      {props.children}
+    </code>
   ),
 };
 

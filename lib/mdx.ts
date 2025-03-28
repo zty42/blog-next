@@ -13,7 +13,10 @@ export async function transMdx(source: string) {
         [
           rehypePrettyCode,
           {
-            theme: "dracula-soft"
+            theme:{
+              dark: "vitesse-dark",
+              light: "vitesse-light",
+            }
           },
         ],
       ];

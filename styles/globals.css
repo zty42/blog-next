@@ -5,13 +5,13 @@
 @layer base {
   :root {
     --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --foreground: 240, 7%, 11%;
 
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 240, 7%, 11%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 240, 7%, 11%;
 
     --primary: 222.2 47.4% 11.2%;
     --primary-foreground: 210 40% 98%;
@@ -30,19 +30,19 @@
 
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --ring: 240, 7%, 11%;
 
     --radius: 0.5rem;
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
+    --background: 240, 7%, 11%;
     --foreground: 210 40% 98%;
 
-    --card: 222.2 84% 4.9%;
+    --card: 240, 7%, 11%;
     --card-foreground: 210 40% 98%;
 
-    --popover: 222.2 84% 4.9%;
+    --popover: 240, 7%, 11%;
     --popover-foreground: 210 40% 98%;
 
     --primary: 210 40% 98%;
@@ -75,18 +75,7 @@
   }
 
   /* code block style start */
-  pre {
-    @apply px-1 py-4 overflow-x-auto rounded-md;
-  }
-  pre [data-line] {
-    padding: 0 1rem;
-  }
-  code {
-    counter-reset: line;
-  }
   code > [data-line]::before {
-    counter-increment: line;
-    content: counter(line);
     display: inline-block;
     width: 1rem;
     margin-right: 2rem;
@@ -98,6 +87,12 @@
   }
   code[data-line-numbers-max-digits="3"] > [data-line]::before {
     width: 3rem;
+  }
+
+  
+  figure[data-rehype-pretty-code-figure]:has(>[data-rehype-pretty-code-title]) pre {
+    border-top-left-radius: 0!important;
+    border-top-right-radius: 0!important
   }
   /* code block style end */
 }
@@ -122,4 +117,18 @@ html:not(.dark) {
   background-position: center center;
   background-size: 24px 24px;
   mask-image: linear-gradient(0deg, transparent 5%, var(--dot-mask-color));
+}
+
+code[data-theme*=" "],
+code[data-theme*=" "] span {
+  color: var(--shiki-light);
+  background-color: #f9f9f9;
+}
+
+.dark {
+  code[data-theme*=" "],
+  code[data-theme*=" "] span {
+    color: var(--shiki-dark);
+    background-color: var(--shiki-dark-bg);
+  }
 }
