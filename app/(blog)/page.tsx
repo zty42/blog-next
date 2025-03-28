@@ -6,7 +6,7 @@ export default async function HomePage() {
   const posts = await getLatestPosts(8);
   return (
     <main className="flex flex-col">
-      <h1 className="text-3xl font-bold tracking-tight mb-6">Latest Posts</h1>
+      <h2 className="text-3xl font-bold tracking-tight mb-6">Latest Posts</h2>
       <div>
         {posts.map((post) => {
           return (
@@ -16,7 +16,7 @@ export default async function HomePage() {
             >
               <time className="mr-4 opacity-50">{post.frontmatter.date}</time>
               <Link key={post.slug} href={`/post/${post.slug}`}>
-                <h1>{post.frontmatter.title}</h1>
+                <h2>{post.frontmatter.title}</h2>
               </Link>
             </div>
           );
@@ -24,7 +24,7 @@ export default async function HomePage() {
       </div>
       <div>
         <Link href="/archive" className="hover:underline">
-        View all posts
+        View all posts ⭢
         </Link>
       </div>
     </main>
