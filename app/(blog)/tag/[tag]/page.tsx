@@ -2,11 +2,6 @@ import { getAllPosts } from "@/lib/api";
 import Link from "next/link";
 import type { Post } from "@/types/post";
 import type { ResolvingMetadata, Metadata } from "next";
-interface TagPageProps {
-  params: {
-    tag: string;
-  };
-}
 
 export async function generateStaticParams() {
   const posts: Post[] = await getAllPosts();
@@ -34,17 +29,17 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata(
-  { params }: TagPageProps,
+  { params }: { params: Promise<{ tag: string }> },
   parent: ResolvingMetadata
 ): Promise<Metadata> {
-  const { tag } = params;
+  const { tag } = await params;
   return {
     title: `${decodeURIComponent(tag)} • ${(await parent).title?.absolute} `,
   };
 }
 
-export default async function TagPage({ params }: TagPageProps) {
-  const { tag } = params;
+export default async function TagPage({ params }: { params: Promise<{ tag: string }> }) {
+  const { tag } = await params;
   const posts: Post[] = await getAllPosts();
   const filterPosts = posts.filter((post) =>
     post.frontmatter.tags.includes(decodeURIComponent(tag))

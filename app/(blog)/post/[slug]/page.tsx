@@ -6,14 +6,8 @@ import { CalendarDays, Tag } from "lucide-react";
 import { getMDXComponent } from "mdx-bundler/client";
 import BackButton from "@/components/bake-button";
 
-interface PostPageProps {
-  params: {
-    slug: string;
-  };
-}
-
 export async function generateMetadata(
-  { params }: PostPageProps,
+  { params }: { params: Promise<{ slug: string }> },
   parent: ResolvingMetadata
 ): Promise<Metadata> {
   const { slug } = await params;
@@ -32,7 +26,11 @@ export async function generateStaticParams() {
   }));
 }
 
-export default async function PostPage({ params }: PostPageProps) {
+export default async function PostPage({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
   const { slug } = await params;
   const post = await getPostBySlug(slug);
   const { code, frontmatter } = post;

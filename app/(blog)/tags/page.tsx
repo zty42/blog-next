@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { Tag } from "lucide-react";
 import { getAllPosts } from "@/lib/api";
-import { Button } from "@/components/ui/button";
 import type { Post } from "@/types/post";
 import type { Metadata } from "next";
 
