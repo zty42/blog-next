@@ -7,10 +7,6 @@ import { useTheme } from "next-themes";
 export function ModeToggle() {
   const { theme, setTheme } = useTheme();
 
-  React.useEffect(() => {
-    console.log("Current theme:", theme);
-  }, [theme]);
-
   return (
     <div>
       <Sun
