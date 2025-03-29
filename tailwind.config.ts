@@ -1,7 +1,7 @@
 import type { Config } from 'tailwindcss'
 
 const config: Config = {
-  darkMode: ["class"],
+  darkMode: "class",
   content: [
     './pages/**/*.{ts,tsx}',
     './components/**/*.{ts,tsx}',
@@ -59,14 +59,6 @@ const config: Config = {
         sm: "calc(var(--radius) - 4px)",
       },
       keyframes: {
-        "accordion-down": {
-          from: { height: "0" },
-          to: { height: "var(--radix-accordion-content-height)" },
-        },
-        "accordion-up": {
-          from: { height: "var(--radix-accordion-content-height)" },
-          to: { height: "0" },
-        },
         shake: {
           '0%': { transform: 'rotate(0deg)' },
           '25%': { transform: 'rotate(-5deg)' },
@@ -76,8 +68,6 @@ const config: Config = {
         },
       },
       animation: {
-        "accordion-down": "accordion-down 0.2s ease-out",
-        "accordion-up": "accordion-up 0.2s ease-out",
         'shake': 'shake 0.5s ease-in-out',
       },
     },
