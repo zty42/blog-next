@@ -7,7 +7,7 @@ const components = {
       HTMLHeadingElement
     >
   ) => (
-    <h1 {...props} className="text-2xl font-extrabold tracking-tight mt-6">
+    <h1 {...props} className="text-2xl font-extrabold tracking-tight my-6">
       {props.children}
     </h1>
   ),

@@ -3,7 +3,7 @@ import Link from "next/link";
 export const Header = () => {
   return (
     <header className="mb-8 ">
-      <div className="flex mt-4 divide-x">
+      <div className="flex divide-x">
         <Link href="/archive" className="hover:underline pr-4 ">
           Archive
         </Link>
