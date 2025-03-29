@@ -38,10 +38,10 @@ export default async function TagsPage() {
       {tagList.map((tag, index) => {
         return (
           <Link href={`/tag/${tag.tagName}`} key={index}>
-            <Button key={index} variant="ghost">
-              <Tag className="w-4 h-4 mr-1" />
-              {tag.tagName}({tag.tagCount})
-            </Button>
+            <div className="items-center text-sm text-muted-foreground hover:text-foreground py-2 inline-flex">
+            <Tag className="w-4 h-4 mr-1" />
+            {tag.tagName}({tag.tagCount})
+            </div>
           </Link>
         );
       })}

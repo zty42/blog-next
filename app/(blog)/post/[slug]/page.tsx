@@ -15,7 +15,8 @@ export async function generateMetadata(
   { params }: PostPageProps,
   parent: ResolvingMetadata
 ): Promise<Metadata> {
-  const post = await getPostBySlug(params.slug);
+  const { slug } = await params;
+  const post = await getPostBySlug(slug);
   const { frontmatter } = post;
   return {
     title: `${frontmatter.title} • ${(await parent).title?.absolute} `,
@@ -31,7 +32,8 @@ export async function generateStaticParams() {
 }
 
 export default async function PostPage({ params }: PostPageProps) {
-  const post = await getPostBySlug(params.slug);
+  const { slug } = await params;
+  const post = await getPostBySlug(slug);
   const { code, frontmatter } = post;
   const { tags, title, date, image } = frontmatter;
   const MdComponent = getMDXComponent(code);
