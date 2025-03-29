@@ -14,8 +14,8 @@ export async function transMdx(source: string) {
           rehypePrettyCode,
           {
             theme:{
-              dark: "vitesse-dark",
-              light: "vitesse-light",
+              dark: "one-dark-pro",
+              light: "one-light",
             }
           },
         ],
